@@ -72,6 +72,22 @@
   .bar{height:10px;background:var(--track);border:1px solid #cfcfcf;position:relative;overflow:hidden;}
   .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);display:block;}
 
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);}
+  table#reel-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:860px;}
+  #reel-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;
+    font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
+  #reel-table th.num,#reel-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  #reel-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  #reel-table tr:hover td{background:#fafafa;}
+  #reel-table td.thumbc{width:62px;}
+  #reel-table td.thumbc a{display:block;position:relative;}
+  #reel-table td.thumbc img{width:54px;height:54px;object-fit:cover;border:1px solid #111;display:block;}
+  #reel-table td.datec{white-space:nowrap;color:var(--soft);}
+  #reel-table td.capc{min-width:280px;max-width:460px;white-space:pre-wrap;word-break:break-word;line-height:1.45;}
+  #reel-table td.zero{color:#111;font-weight:700;}
+  #reel-table .mini{display:inline-block;min-width:34px;}
+  .sumstats{display:flex;flex-wrap:wrap;gap:8px 26px;margin:2px 0 14px;font-size:.9rem;}
+  .sumstats b{font-variant-numeric:tabular-nums;}
   ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:1000px;}
   ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
@@ -172,32 +188,17 @@
     <p class="legend">Każda miniatura to jedna rolka, ustawiona w dniu publikacji (profil liczy 47; tu 45 wczytanych). Obramowane = post z hashtagami (rzadkość). Najedź po szczegóły, kliknij, aby otworzyć. Widać start jesienią 2025, kilkumiesięczną przerwę zimą/wiosną i regularne publikowanie od lata 2026.</p>
     <div class="tlx" id="tl-reel" data-set="reel"></div>
 
-    <h3>Wybrane rolki — co wykorzystane, co nie</h3>
-    <div class="cards">
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeGuLP9oPAl/" target="_blank" rel="noopener"><img src="img/mk/DeGuLP9oPAl.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>05.10.26</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>565 / 2200</b></div><div class="bar"><i style="width:26%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DfQFofXI7-a/" target="_blank" rel="noopener"><img src="img/mk/DfQFofXI7-a.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>02.11.26</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>678 / 2200</b></div><div class="bar"><i style="width:31%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeheFdjo5JJ/" target="_blank" rel="noopener"><img src="img/mk/DeheFdjo5JJ.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka · z hashtagami</span><span>15.10.26</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>236 / 2200</b></div><div class="bar"><i style="width:11%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>4 / 30</b></div><div class="bar"><i style="width:13%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DPTM-5zCEtD/" target="_blank" rel="noopener"><img src="img/mk/DPTM-5zCEtD.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>02.10.25</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>6 / 2200</b></div><div class="bar"><i style="width:1%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
+    <h3>Wszystkie rolki — pełne dane</h3>
+    <p id="reel-summary" class="legend">Ładowanie danych…</p>
+    <div class="tablewrap">
+      <table id="reel-table">
+        <thead><tr>
+          <th>Rolka</th><th>Data</th><th>Pełny opis</th>
+          <th class="num">Znaki<br>/ 2200</th><th class="num">Hash-<br>tagi</th>
+          <th class="num">Polu-<br>bienia</th><th class="num">Komen-<br>tarze</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <h3>Co poprawić — Make it REEL</h3>
@@ -298,6 +299,34 @@
   function renderAll(){document.querySelectorAll('.tlx').forEach(render);}
   renderAll();
   var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(renderAll,150);});
+})();
+</script>
+
+<script>
+(function(){
+  function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0].slice(2);}
+  fetch('reels.json').then(function(r){return r.json();}).then(function(R){
+    var tb=document.querySelector('#reel-table tbody');
+    R.forEach(function(p){
+      var tr=document.createElement('tr');
+      var td1=document.createElement('td');td1.className='thumbc';
+      var a=document.createElement('a');a.href='https://www.instagram.com/makeitr__l/reel/'+p.c+'/';a.target='_blank';a.rel='noopener';
+      var im=document.createElement('img');im.src='img/mk/'+p.c+'.jpg';im.alt='';im.loading='lazy';a.appendChild(im);td1.appendChild(a);
+      var td2=document.createElement('td');td2.className='datec';td2.textContent=fmt(p.d);
+      var hasCap=p.cap&&p.cap.trim();
+      var td3=document.createElement('td');td3.className='capc';td3.textContent=hasCap?p.cap:'— brak opisu —';if(!hasCap)td3.style.color='#999';
+      var td4=document.createElement('td');td4.className='num'+(p.l===0?' zero':'');td4.textContent=p.l;
+      var td5=document.createElement('td');td5.className='num'+(p.h===0?' zero':'');td5.textContent=p.h;
+      var td6=document.createElement('td');td6.className='num';td6.textContent=(p.li==null?'—':p.li);
+      var td7=document.createElement('td');td7.className='num';td7.textContent=(p.co==null?'—':p.co);
+      [td1,td2,td3,td4,td5,td6,td7].forEach(function(td){tr.appendChild(td);});
+      tb.appendChild(tr);
+    });
+    var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0;
+    R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;});
+    var el=document.getElementById('reel-summary');
+    if(el)el.textContent='Wszystkie '+n+' wczytanych rolek (profil liczy 47), od najnowszej. Średnio '+Math.round(sl/n)+' polubień i '+(sc/n).toFixed(1)+' komentarza na rolkę; rekord polubień: '+maxl+'. Bez żadnego hashtagu: '+noh+' z '+n+' rolek. Średnia długość opisu: '+Math.round(sumcap/n)+' znaków (z limitu 2200). Kliknij miniaturę, aby otworzyć rolkę.';
+  }).catch(function(e){var el=document.getElementById('reel-summary');if(el)el.textContent='Nie udało się wczytać danych rolek (reels.json).';});
 })();
 </script>
 </body>
