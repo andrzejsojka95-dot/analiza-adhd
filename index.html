@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>Przegląd profili — ADHD Creator Media i Make it REEL</title>
 <style>
-  :root{ --ink:#111; --soft:#666; --line:#dcdcdc; --line2:#111; --bg:#fff; --fill:#f2f2f2; --track:#e6e6e6; }
+  :root{ --ink:#111; --soft:#666; --line:#dcdcdc; --line2:#111; --bg:#fff; --fill:#f2f2f2; --track:#e6e6e6; --alert:#c0261f; --alert-soft:#c0261f10; }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55;}
@@ -73,7 +73,7 @@
   .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);display:block;}
 
   .tablewrap{overflow-x:auto;border:1px solid var(--line);}
-  table#reel-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:860px;}
+  table#reel-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1020px;}
   #reel-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;
     font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
   #reel-table th.num,#reel-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
@@ -95,6 +95,11 @@
   .agg .tile .sub{font-size:.82rem;color:var(--soft);margin-top:4px;}
   .agg .tile .mini-bar{height:7px;background:var(--track);border:1px solid #cfcfcf;position:relative;margin-top:9px;}
   .agg .tile .mini-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);}
+  .agg .tile.alert{border:2px solid var(--alert);background:var(--alert-soft);}
+  .agg .tile.alert .mini-bar i{background:var(--alert);}
+  .agg .tile .badge{display:inline-block;background:var(--alert);color:#fff;font-size:.64rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:9px;}
+  #reel-table td.rem{color:var(--alert);font-weight:700;}
   ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:1000px;}
   ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
@@ -202,7 +207,8 @@
       <table id="reel-table">
         <thead><tr>
           <th>Rolka</th><th>Data</th><th>Pełny opis</th>
-          <th class="num">Znaki<br>/ 2200</th><th class="num">Hash-<br>tagi</th>
+          <th class="num">Znaki<br>/ 2200</th><th class="num">Zostało<br>znaków</th>
+          <th class="num">Hash-<br>tagi</th><th class="num">Zostało<br>hashtagów</th>
           <th class="num">Polu-<br>bienia</th><th class="num">Komen-<br>tarze</th>
         </tr></thead>
         <tbody></tbody>
@@ -324,24 +330,26 @@
       var hasCap=p.cap&&p.cap.trim();
       var td3=document.createElement('td');td3.className='capc';td3.textContent=hasCap?p.cap:'— brak opisu —';if(!hasCap)td3.style.color='#999';
       var td4=document.createElement('td');td4.className='num'+(p.l===0?' zero':'');td4.textContent=p.l;
+      var td4b=document.createElement('td');td4b.className='num rem';td4b.textContent=(2200-(p.l||0));
       var td5=document.createElement('td');td5.className='num'+(p.h===0?' zero':'');td5.textContent=p.h;
+      var td5b=document.createElement('td');td5b.className='num rem';td5b.textContent=(30-(p.h||0));
       var td6=document.createElement('td');td6.className='num';td6.textContent=(p.li==null?'—':p.li);
       var td7=document.createElement('td');td7.className='num';td7.textContent=(p.co==null?'—':p.co);
-      [td1,td2,td3,td4,td5,td6,td7].forEach(function(td){tr.appendChild(td);});
+      [td1,td2,td3,td4,td4b,td5,td5b,td6,td7].forEach(function(td){tr.appendChild(td);});
       tb.appendChild(tr);
     });
     var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0,sumht=0;
     R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;sumht+=p.h||0;});
     function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
-    function tile(big,lab,sub,pct){var bar=(pct==null)?'':'<div class="mini-bar"><i style="width:'+pct+'%"></i></div>';return '<div class="tile"><div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div>'+bar+'</div>';}
+    function tile(big,lab,sub,pct,alert){var bar=(pct==null)?'':'<div class="mini-bar"><i style="width:'+pct+'%"></i></div>';var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div>'+bar+'</div>';}
     var capPoss=n*2200, htPoss=n*30;
     var capPct=Math.round(sumcap/capPoss*100), htPct=Math.round(sumht/htPoss*100);
     var el=document.getElementById('reel-summary');
     if(el)el.textContent='Wszystkie '+n+' wczytanych rolek (profil liczy 47), od najnowszej. Słupki pokazują, jak mała część dostępnego limitu jest wykorzystana. Kliknij miniaturę, aby otworzyć rolkę.';
     var agg=document.getElementById('reel-agg');
     if(agg)agg.innerHTML=
-      tile(nf(sumcap)+' / '+nf(capPoss), 'Znaki opisów', capPct+'% limitu (2200 znaków na rolkę)', capPct)+
-      tile(nf(sumht)+' / '+nf(htPoss), 'Hashtagi', htPct+'% limitu (30 na rolkę) · '+noh+' rolek bez hashtagu', htPct)+
+      tile(nf(sumcap)+' / '+nf(capPoss), 'Znaki opisów', capPct+'% limitu — do wykorzystania jeszcze '+nf(capPoss-sumcap)+' znaków', capPct, 'Pilne do poprawy')+
+      tile(nf(sumht)+' / '+nf(htPoss), 'Hashtagi', htPct+'% limitu — do wykorzystania jeszcze '+nf(htPoss-sumht)+' hashtagów · '+noh+' rolek bez żadnego', htPct, 'Pilne do poprawy')+
       tile(nf(sl), 'Polubienia razem', 'średnio '+Math.round(sl/n)+' na rolkę · rekord '+maxl, null)+
       tile(nf(sc), 'Komentarze razem', 'średnio '+(sc/n).toFixed(1).replace('.',',')+' na rolkę', null);
   }).catch(function(e){var el=document.getElementById('reel-summary');if(el)el.textContent='Nie udało się wczytać danych rolek (reels.json).';});
