@@ -124,44 +124,61 @@
   ul.todo li::before{content:"\2192";position:absolute;left:2px;top:8px;font-weight:700;}
   b{font-weight:700;}
   a{color:var(--ink);}
+  .legend{max-width:none;}
+  /* nawigacja */
+  nav.topnav{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:2px solid var(--line2);
+    display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:12px 0;margin-bottom:10px;}
+  nav.topnav .grp{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);font-weight:700;}
+  nav.topnav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.86rem;padding:3px 0;
+    border-bottom:2px solid transparent;}
+  nav.topnav a:hover{border-bottom-color:var(--alert);}
+  nav.topnav .sep{color:var(--line);}
+  section.brand{scroll-margin-top:72px;}
+  h3[id]{scroll-margin-top:72px;}
+  /* klikalny tip (pełna szerokość) */
+  .tip{display:block;width:100%;text-align:left;border:1px solid var(--line2);background:var(--fill);
+    padding:0;margin:6px 0 20px;cursor:pointer;font-family:inherit;color:var(--ink);}
+  .tip .tip-head{display:flex;align-items:center;gap:11px;padding:13px 16px;font-weight:600;font-size:.95rem;}
+  .tip .bang{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;flex:0 0 auto;
+    background:var(--alert);color:#fff;font-weight:800;border-radius:50%;font-size:.95rem;}
+  .tip .chev{margin-left:auto;color:var(--soft);font-size:.9rem;transition:transform .15s;}
+  .tip.open .chev{transform:rotate(90deg);}
+  .tip .tip-body{display:none;padding:0 16px 15px 50px;font-size:.93rem;line-height:1.55;color:#222;}
+  .tip.open .tip-body{display:block;}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
-    <h1>ADHD Creator Media i Make it REEL — przegląd profili</h1>
-    <p class="intro">Jeden zespół, dwie osobne marki. Różne cele, różni odbiorcy — więc każdą opisuję osobno. Oś czasu pokazuje każdą publikację w dniu, w którym wyszła (najedź na miniaturę po szczegóły, kliknij, by otworzyć post). Niżej wybrane posty z osobna: ile z opisu i hashtagów jest wykorzystane.</p>
-    <p class="date">Stan na 22.11.2026</p>
-  </header>
+  <nav class="topnav">
+    <span class="grp">Marka 1 · ADHD</span>
+    <a href="#adhd-ig">Instagram</a><span class="sep">·</span><a href="#adhd-fb">Facebook</a>
+    <span class="grp">Marka 2 · Make it REEL</span>
+    <a href="#reel-ig">Instagram</a>
+    <span class="sep">|</span><span class="grp" style="color:var(--soft)">22.11.2026</span>
+  </nav>
 
   <!-- MARKA 1 -->
-  <section class="brand">
+  <section class="brand" id="adhd">
     <p class="kicker">Marka 1 · firmy / B2B</p>
     <h2>ADHD Creator Media</h2>
     <p class="role">Content i marketing dla firm. Marka nowa, budowana od zera po rebrandingu.</p>
 
     <h3>Profile</h3>
     <div class="facts">
-      <div><span>Facebook</span><span>322 obserwujących · opis dobry · kategoria „agencja marketingowa" · 0 opinii · Tarnów</span></div>
-      <div><span>Instagram</span><span>@adhdcontentmedia · 4 obserwujących · 5 postów · opis słaby</span></div>
+      <div><span>Facebook</span><span><a href="https://www.facebook.com/people/ADHD-Creator-Media/61590514929796/" target="_blank" rel="noopener">ADHD Creator Media</a> · 322 obserwujących · opis dobry · kategoria „agencja marketingowa" · 0 opinii · Tarnów</span></div>
+      <div><span>Instagram</span><span><a href="https://www.instagram.com/adhdcontentmedia/" target="_blank" rel="noopener">@adhdcontentmedia</a> · 4 obserwujących · 5 postów · opis słaby</span></div>
     </div>
 
     <h3>Oś czasu publikacji</h3>
-    <p class="legend">Ta sama skala co przy Make it REEL (wrzesień 2025 – listopad 2026). ADHD to świeży profil — wszystkie 5 postów stoi na samym końcu osi, w 3 dniach listopada. Reszta osi jest pusta, bo wcześniej nic tu nie było.</p>
+    <button class="tip" type="button"><span class="tip-head"><span class="bang">!</span>Jak czytać oś czasu<span class="chev">▸</span></span><span class="tip-body">Ta sama skala co przy Make it REEL (wrzesień 2025 – listopad 2026). ADHD to świeży profil — wszystkie 5 postów stoi na samym końcu osi, w 3 dniach listopada. Reszta osi jest pusta, bo wcześniej nic tu nie było. Najedź na miniaturę po szczegóły, kliknij, aby otworzyć post.</span></button>
     <div class="tlx" id="tl-adhd" data-set="adhd"></div>
 
-    <h3>Instagram — wszystkie posty (pełne dane)</h3>
+    <h3 id="adhd-ig">Instagram — wszystkie posty (pełne dane)</h3>
     <p id="ig-summary" class="legend">Ładowanie danych…</p>
     <div class="agg" id="ig-agg"></div>
     <div class="maxed" id="ig-maxed"></div>
-    <div class="infobox">
-      <span class="ic"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#111" stroke-width="2"/><circle cx="20" cy="12.5" r="2.3" fill="#111"/><rect x="18" y="17.5" width="4" height="13.5" rx="1.2" fill="#111"/></svg></span>
-      <div class="c">
-        <h4>Jak liczony jest limit</h4>
-        <p>Jak na Instagramie: limit <b>2200 znaków</b> obejmuje <b>cały opis razem z hashtagami</b>. Kolumna „Hashtagi / 30" to oddzielny limit na liczbę samych hashtagów. Czerwony <b>„!"</b> oznacza brak (0 znaków lub 0 hashtagów).</p>
-      </div>
-    </div>
+    <button class="tip" type="button"><span class="tip-head"><span class="bang">!</span>Jak liczony jest limit<span class="chev">▸</span></span><span class="tip-body">Na Instagramie limit <b>2200 znaków</b> obejmuje <b>cały opis razem z hashtagami</b>. Kolumna „Hashtagi / 30" to oddzielny limit na liczbę samych hashtagów, a ich znaki są już wliczone w „Znaki / 2200". Czerwony <b>„!"</b> w tabeli oznacza brak (0 znaków lub 0 hashtagów).</span></button>
     <div class="tablewrap">
       <table id="ig-table" class="dtable">
         <thead><tr>
@@ -174,16 +191,10 @@
       </table>
     </div>
 
-    <h3>Facebook — wszystkie posty (pełne dane)</h3>
+    <h3 id="adhd-fb">Facebook — wszystkie posty (pełne dane)</h3>
     <p id="fb-summary" class="legend">Ładowanie danych…</p>
     <div class="agg" id="fb-agg"></div>
-    <div class="infobox">
-      <span class="ic"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#111" stroke-width="2"/><circle cx="20" cy="12.5" r="2.3" fill="#111"/><rect x="18" y="17.5" width="4" height="13.5" rx="1.2" fill="#111"/></svg></span>
-      <div class="c">
-        <h4>Czym różni się Facebook od Instagrama</h4>
-        <p>Facebook <b>nie ma napiętego limitu znaków</b> w poście (ok. 63 000), więc nie liczymy tu „ile zostało" jak na Instagramie. Na FB liczy się przede wszystkim <b>regularność, reakcje, komentarze i udostępnienia</b>. Miniatury to zrzuty postów (kliknięcie otwiera fanpage).</p>
-      </div>
-    </div>
+    <button class="tip" type="button"><span class="tip-head"><span class="bang">!</span>Czym różni się Facebook od Instagrama<span class="chev">▸</span></span><span class="tip-body">Facebook <b>nie ma napiętego limitu znaków</b> w poście (ok. 63 000), więc nie liczymy tu „ile zostało" jak na Instagramie. Na FB liczy się przede wszystkim <b>regularność, reakcje, komentarze i udostępnienia</b>. Miniatury to zrzuty postów.</span></button>
     <div class="tablewrap">
       <table id="fb-table" class="dtable">
         <thead><tr>
@@ -195,45 +206,31 @@
       </table>
     </div>
 
-    <h3>Co poprawić — ADHD Creator Media</h3>
-    <ul class="todo">
-      <li>Ujednolicić opis Instagrama z Facebookiem i dodać numer telefonu.</li>
-      <li>Każdy post z opisem i 10–20 trafnymi hashtagami (branża + region: #Tarnów, #rolki, #marketingdlafirm).</li>
-      <li>Tekst „o nas" przenieść z posta do opisu profilu i wyróżnień.</li>
-      <li>Stały rytm (np. 2–3 posty/tydzień) zamiast 5 postów w 3 dni.</li>
-      <li>Logo / podpis na każdej rolce; zacząć zbierać opinie (na FB wciąż 0).</li>
-    </ul>
   </section>
 
   <!-- MARKA 2 -->
-  <section class="brand">
+  <section class="brand" id="reel">
     <p class="kicker">Marka 2 · śluby / eventy</p>
     <h2>Make it REEL</h2>
     <p class="role">Wideo ze ślubów, wesel i eventów. Marka działająca, z realnym portfolio.</p>
 
     <h3>Profil</h3>
     <div class="facts">
-      <div><span>Instagram</span><span>@makeitr__l · 306 obserwujących · 47 postów (same rolki) · 129 obserwowanych</span></div>
+      <div><span>Instagram</span><span><a href="https://www.instagram.com/makeitr__l/" target="_blank" rel="noopener">@makeitr__l</a> · 306 obserwujących · 47 postów (same rolki) · 129 obserwowanych</span></div>
       <div><span>Hashtagi</span><span>34 z 45 rolek bez żadnego hashtagu · najwięcej użytych naraz: 4 (z możliwych 30)</span></div>
       <div><span>Aktywność</span><span>Start wrzesień 2025 · przerwa grudzień 2025 – kwiecień 2026 · od lata 2026 regularnie</span></div>
       <div><span>Zasięg</span><span>Lubelskie / Małopolskie / Podkarpacie · strona www: brak</span></div>
     </div>
 
     <h3>Oś czasu publikacji — wszystkie 45 rolek</h3>
-    <p class="legend">Każda miniatura to jedna rolka, ustawiona w dniu publikacji (profil liczy 47; tu 45 wczytanych). Obramowane = post z hashtagami (rzadkość). Najedź po szczegóły, kliknij, aby otworzyć. Widać start jesienią 2025, kilkumiesięczną przerwę zimą/wiosną i regularne publikowanie od lata 2026.</p>
+    <button class="tip" type="button"><span class="tip-head"><span class="bang">!</span>Jak czytać oś czasu<span class="chev">▸</span></span><span class="tip-body">Każda miniatura to jedna rolka, ustawiona w dniu publikacji (profil liczy 47; tu 45 wczytanych). Obramowane = post z hashtagami (rzadkość). Najedź po szczegóły, kliknij, aby otworzyć. Widać start jesienią 2025, kilkumiesięczną przerwę zimą/wiosną i regularne publikowanie od lata 2026.</span></button>
     <div class="tlx" id="tl-reel" data-set="reel"></div>
 
-    <h3>Wszystkie rolki — pełne dane</h3>
+    <h3 id="reel-ig">Wszystkie rolki — pełne dane</h3>
     <p id="reel-summary" class="legend">Ładowanie danych…</p>
     <div class="agg" id="reel-agg"></div>
     <div class="maxed" id="reel-maxed"></div>
-    <div class="infobox">
-      <span class="ic"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#111" stroke-width="2"/><circle cx="20" cy="12.5" r="2.3" fill="#111"/><rect x="18" y="17.5" width="4" height="13.5" rx="1.2" fill="#111"/></svg></span>
-      <div class="c">
-        <h4>Jak liczony jest limit</h4>
-        <p>Na Instagramie limit <b>2200 znaków</b> obejmuje <b>cały opis razem z hashtagami</b> — hashtagi są częścią opisu, nie osobnym polem. Kolumna „Hashtagi / 30" to oddzielny limit na <b>liczbę</b> samych hashtagów, a ich znaki są już wliczone w „Znaki / 2200".</p>
-      </div>
-    </div>
+    <button class="tip" type="button"><span class="tip-head"><span class="bang">!</span>Jak liczony jest limit<span class="chev">▸</span></span><span class="tip-body">Na Instagramie limit <b>2200 znaków</b> obejmuje <b>cały opis razem z hashtagami</b> — hashtagi są częścią opisu, nie osobnym polem. Kolumna „Hashtagi / 30" to oddzielny limit na <b>liczbę</b> samych hashtagów, a ich znaki są już wliczone w „Znaki / 2200". Czerwony <b>„!"</b> oznacza brak (0).</span></button>
     <div class="tablewrap">
       <table id="reel-table" class="dtable">
         <thead><tr>
@@ -246,14 +243,6 @@
       </table>
     </div>
 
-    <h3>Co poprawić — Make it REEL</h3>
-    <ul class="todo">
-      <li>Stały zestaw 15–20 lokalnych hashtagów do każdej rolki (#ślub, #wesele + region) — dziś 34 z 45 rolek nie ma żadnego.</li>
-      <li>Jeden schemat opisu: para, miejsce, co robicie, zachęta do kontaktu — opisy są krótkie i nierówne (od 6 do 678 znaków).</li>
-      <li>Strona www + link w opisie z ofertą, cennikiem i kontaktem (teraz tylko wiadomości).</li>
-      <li>Nie robić wielomiesięcznych przerw (grudzień–kwiecień) — algorytm i odbiorcy nagradzają regularność.</li>
-      <li>Konkretniejszy opis profilu: co, dla kogo, gdzie, jak się umówić.</li>
-    </ul>
   </section>
 
 </div>
@@ -452,6 +441,14 @@
       tile(nf(sh), 'Udostępnienia razem', 'średnio '+(sh/n).toFixed(1).replace('.',',')+' na post', null)+
       tile(co, 'Komentarze razem', 'zero dyskusji pod postami', 'Pilne do poprawy');
   }).catch(function(e){var el=document.getElementById('fb-summary');if(el)el.textContent='Nie udało się wczytać danych postów FB (fb.json).';});
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.tip').forEach(function(t){
+    t.addEventListener('click',function(){t.classList.toggle('open');});
+  });
 })();
 </script>
 </body>
