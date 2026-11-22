@@ -100,6 +100,11 @@
   .agg .tile .badge{display:inline-block;background:var(--alert);color:#fff;font-size:.64rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:9px;}
   #reel-table td.rem{color:var(--alert);font-weight:700;}
+  .maxed{display:flex;align-items:center;gap:22px;border:2px solid var(--alert);background:var(--alert-soft);
+    padding:16px 22px;margin:2px 0 16px;}
+  .maxed .num{font-size:3.4rem;font-weight:800;color:var(--alert);line-height:.9;font-variant-numeric:tabular-nums;}
+  .maxed .txt{font-size:.96rem;}
+  .maxed .txt b{color:var(--alert);}
   ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:1000px;}
   ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
@@ -203,6 +208,7 @@
     <h3>Wszystkie rolki — pełne dane</h3>
     <p id="reel-summary" class="legend">Ładowanie danych…</p>
     <div class="agg" id="reel-agg"></div>
+    <div class="maxed" id="reel-maxed"></div>
     <p class="legend"><b>Jak liczony jest limit:</b> na Instagramie limit 2200 znaków obejmuje <b>cały opis razem z hashtagami</b> (hashtagi są częścią opisu). Kolumna „Hashtagi / 30" to osobny limit na <b>liczbę</b> samych hashtagów — ich znaki są już wliczone w „Znaki / 2200".</p>
     <div class="tablewrap">
       <table id="reel-table">
@@ -353,6 +359,9 @@
       tile(nf(sumht)+' / '+nf(htPoss), 'Hashtagi', htPct+'% limitu — do wykorzystania jeszcze '+nf(htPoss-sumht)+' hashtagów · '+noh+' rolek bez żadnego', htPct, 'Pilne do poprawy')+
       tile(nf(sl), 'Polubienia razem', 'średnio '+Math.round(sl/n)+' na rolkę · rekord '+maxl, null)+
       tile(nf(sc), 'Komentarze razem', 'średnio '+(sc/n).toFixed(1).replace('.',',')+' na rolkę', null);
+    var maxed=R.filter(function(p){return (p.l||0)>=2200 || (p.h||0)>=30;}).length;
+    var mx=document.getElementById('reel-maxed');
+    if(mx)mx.innerHTML='<div class="num">'+maxed+'!</div><div class="txt"><b>'+maxed+' z '+n+' rolek</b> wykorzystało pełny limit — żadna nie dobiła ani do 2200 znaków, ani do 30 hashtagów. W każdej jest niewykorzystany zapas.</div>';
   }).catch(function(e){var el=document.getElementById('reel-summary');if(el)el.textContent='Nie udało się wczytać danych rolek (reels.json).';});
 })();
 </script>
