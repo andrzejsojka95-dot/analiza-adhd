@@ -100,20 +100,13 @@
   .agg .tile .badge{display:inline-block;background:var(--alert);color:#fff;font-size:.64rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:9px;}
   .dtable td.rem{color:var(--alert);font-weight:700;}
-  #fb-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:900px;}
-  #fb-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;}
-  #fb-table td.thumbc{width:168px;}
-  #fb-table td.thumbc a{display:block;position:relative;}
-  #fb-table td.thumbc img{width:158px;height:158px;object-fit:cover;border:1px solid #111;display:block;background:var(--fill);}
-  #fb-table td{vertical-align:middle;}
-  @media(max-width:620px){#fb-table td.thumbc{width:108px;}#fb-table td.thumbc img{width:100px;height:100px;}}
-  #fb-table th.num,#fb-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-  #fb-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
-  #fb-table tr:hover td{background:#fafafa;}
-  #fb-table td.capc{min-width:300px;max-width:520px;white-space:pre-wrap;word-break:break-word;line-height:1.45;}
-  #fb-table td.datec{white-space:nowrap;color:var(--soft);}
-  #fb-table td.locc{white-space:nowrap;color:var(--soft);font-size:.82rem;}
-  #fb-table td.zero{color:var(--alert);font-weight:700;}
+  .dtable td.locc{white-space:nowrap;color:var(--soft);font-size:.82rem;}
+  .dtable td.lp{color:var(--soft);font-variant-numeric:tabular-nums;width:40px;text-align:right;}
+  .dtable tr.hidden-row{display:none;}
+  .showmore{display:block;width:100%;text-align:center;padding:12px;margin-top:-1px;border:2px solid var(--alert);
+    background:var(--alert-soft);color:var(--alert);font-weight:700;font-size:.86rem;cursor:pointer;
+    text-transform:uppercase;letter-spacing:.05em;font-family:inherit;}
+  .showmore:hover{background:var(--alert);color:#fff;}
   .maxed{display:flex;align-items:center;gap:22px;border:2px solid var(--alert);background:var(--alert-soft);
     padding:16px 22px;margin:2px 0 16px;}
   .maxed .num{font-size:3.4rem;font-weight:800;color:var(--alert);line-height:.9;font-variant-numeric:tabular-nums;}
@@ -172,7 +165,7 @@
     <div class="tablewrap">
       <table id="ig-table" class="dtable">
         <thead><tr>
-          <th>Post</th><th>Data</th><th>Pełny opis</th>
+          <th class="num">Lp.</th><th>Post</th><th>Data</th><th>Pełny opis</th>
           <th class="num">Znaki / 2200</th><th class="num">Zostało znaków</th>
           <th class="num">Hashtagi</th><th class="num">Zostało hashtagów</th>
           <th class="num">Polubienia</th><th class="num">Komentarze</th>
@@ -194,7 +187,7 @@
     <div class="tablewrap">
       <table id="fb-table" class="dtable">
         <thead><tr>
-          <th>Post</th><th>Data</th><th>Miejsce</th><th>Pełny opis</th>
+          <th class="num">Lp.</th><th>Post</th><th>Data</th><th>Miejsce</th><th>Pełny opis</th>
           <th class="num">Znaki</th><th class="num">Hashtagi</th>
           <th class="num">Reakcje</th><th class="num">Komentarze</th><th class="num">Udostępnienia</th>
         </tr></thead>
@@ -244,7 +237,7 @@
     <div class="tablewrap">
       <table id="reel-table" class="dtable">
         <thead><tr>
-          <th>Rolka</th><th>Data</th><th>Pełny opis</th>
+          <th class="num">Lp.</th><th>Rolka</th><th>Data</th><th>Pełny opis</th>
           <th class="num">Znaki / 2200</th><th class="num">Zostało znaków</th>
           <th class="num">Hashtagi</th><th class="num">Zostało hashtagów</th>
           <th class="num">Polubienia</th><th class="num">Komentarze</th>
@@ -359,11 +352,26 @@
   function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0].slice(2);}
   function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
   function tile(big,lab,sub,pct,alert){var bar=(pct==null)?'':'<div class="mini-bar"><i style="width:'+pct+'%"></i></div>';var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div>'+bar+'</div>';}
+  function collapseTable(sel,limit){
+    var table=document.querySelector(sel);if(!table)return;
+    var rows=[].slice.call(table.querySelectorAll('tbody tr'));
+    if(rows.length<=limit)return;
+    var hidden=rows.slice(limit);
+    hidden.forEach(function(r){r.classList.add('hidden-row');});
+    var btn=document.createElement('button');btn.className='showmore';
+    var label='Zobacz więcej ('+hidden.length+')';btn.textContent=label;
+    var wrap=table.closest('.tablewrap')||table.parentNode;
+    wrap.parentNode.insertBefore(btn,wrap.nextSibling);
+    var open=false;
+    btn.addEventListener('click',function(){open=!open;hidden.forEach(function(r){r.classList.toggle('hidden-row',!open);});btn.textContent=open?'Zwiń':label;});
+  }
+  window.collapseTable=collapseTable;
   function build(cfg){
     fetch(cfg.src+'?v=3').then(function(r){return r.json();}).then(function(R){
       var tb=document.querySelector(cfg.table+' tbody');
-      R.forEach(function(p){
+      R.forEach(function(p,ix){
         var tr=document.createElement('tr');
+        var tdlp=document.createElement('td');tdlp.className='lp';tdlp.textContent=(ix+1);
         var td1=document.createElement('td');td1.className='thumbc';
         var a=document.createElement('a');a.href=p.url||cfg.url(p);a.target='_blank';a.rel='noopener';
         var im=document.createElement('img');im.src=p.img||cfg.img(p);im.alt='';im.loading='lazy';a.appendChild(im);td1.appendChild(a);
@@ -376,9 +384,10 @@
         var td5b=document.createElement('td');td5b.className='num rem';td5b.textContent=(30-(p.h||0));
         var td6=document.createElement('td');td6.className='num';td6.textContent=(p.li==null?'—':p.li);
         var td7=document.createElement('td');td7.className='num'+(p.co===0?' zero':'');td7.textContent=(p.co==null?'—':p.co);
-        [td1,td2,td3,td4,td4b,td5,td5b,td6,td7].forEach(function(td){tr.appendChild(td);});
+        [tdlp,td1,td2,td3,td4,td4b,td5,td5b,td6,td7].forEach(function(td){tr.appendChild(td);});
         tb.appendChild(tr);
       });
+      collapseTable(cfg.table, 6);
       var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0,sumht=0;
       R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;sumht+=p.h||0;});
       var capPoss=n*2200, htPoss=n*30;
@@ -415,6 +424,7 @@
     F.forEach(function(p,idx){
       var tr=document.createElement('tr');
       function td(cls,txt){var d=document.createElement('td');if(cls)d.className=cls;d.textContent=txt;return d;}
+      tr.appendChild(td('lp',idx+1));
       var tdp=document.createElement('td');tdp.className='thumbc';
       var im=document.createElement('img');im.src=p.img||('img/fb/post'+(idx+1)+'.png');im.alt='';im.loading='lazy';
       if(p.url){var a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener';a.appendChild(im);tdp.appendChild(a);}
@@ -430,6 +440,7 @@
       tr.appendChild(td('num',p.sh));
       tb.appendChild(tr);
     });
+    if(window.collapseTable)window.collapseTable('#fb-table',6);
     var n=F.length,rt=0,sh=0,co=0;
     F.forEach(function(p){rt+=p.li;sh+=p.sh;co+=p.co;});
     var el=document.getElementById('fb-summary');
