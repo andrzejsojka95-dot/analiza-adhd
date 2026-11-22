@@ -100,6 +100,15 @@
   .agg .tile .badge{display:inline-block;background:var(--alert);color:#fff;font-size:.64rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:9px;}
   #reel-table td.rem{color:var(--alert);font-weight:700;}
+  #fb-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:900px;}
+  #fb-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
+  #fb-table th.num,#fb-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  #fb-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  #fb-table tr:hover td{background:#fafafa;}
+  #fb-table td.capc{min-width:300px;max-width:520px;white-space:pre-wrap;word-break:break-word;line-height:1.45;}
+  #fb-table td.datec{white-space:nowrap;color:var(--soft);}
+  #fb-table td.locc{white-space:nowrap;color:var(--soft);font-size:.82rem;}
+  #fb-table td.zero{color:var(--alert);font-weight:700;}
   .maxed{display:flex;align-items:center;gap:22px;border:2px solid var(--alert);background:var(--alert-soft);
     padding:16px 22px;margin:2px 0 16px;}
   .maxed .num{font-size:3.4rem;font-weight:800;color:var(--alert);line-height:.9;font-variant-numeric:tabular-nums;}
@@ -181,6 +190,27 @@
           <div class="meter"><div class="ml"><span>Opis</span><b>791 / 2200</b></div><div class="bar"><i style="width:36%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>5 / 30</b></div><div class="bar"><i style="width:17%"></i></div></div></div>
       </div>
+    </div>
+
+    <h3>Facebook — wszystkie posty (pełne dane)</h3>
+    <p id="fb-summary" class="legend">Ładowanie danych…</p>
+    <div class="agg" id="fb-agg"></div>
+    <div class="infobox">
+      <span class="ic"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#111" stroke-width="2"/><circle cx="20" cy="12.5" r="2.3" fill="#111"/><rect x="18" y="17.5" width="4" height="13.5" rx="1.2" fill="#111"/></svg></span>
+      <div class="c">
+        <h4>Czym różni się Facebook od Instagrama</h4>
+        <p>Facebook <b>nie ma napiętego limitu znaków</b> w poście (ok. 63 000), więc nie liczymy tu „ile zostało" jak na Instagramie. Na FB liczy się przede wszystkim <b>regularność, reakcje, komentarze i udostępnienia</b>. Miniatur postów Facebook nie udostępnia publicznie tak jak Instagram, dlatego tu ich nie ma.</p>
+      </div>
+    </div>
+    <div class="tablewrap">
+      <table id="fb-table">
+        <thead><tr>
+          <th>Data</th><th>Miejsce</th><th>Pełny opis</th>
+          <th class="num">Znaki</th><th class="num">Hash-<br>tagi</th>
+          <th class="num">Reakcje</th><th class="num">Komen-<br>tarze</th><th class="num">Udostęp-<br>nienia</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <h3>Co poprawić — ADHD Creator Media</h3>
@@ -375,6 +405,40 @@
     var mx=document.getElementById('reel-maxed');
     if(mx)mx.innerHTML='<div class="num">'+maxed+'!</div><div class="txt"><b>'+maxed+' z '+n+' rolek</b> wykorzystało pełny limit — żadna nie dobiła ani do 2200 znaków, ani do 30 hashtagów. W każdej jest niewykorzystany zapas.</div>';
   }).catch(function(e){var el=document.getElementById('reel-summary');if(el)el.textContent='Nie udało się wczytać danych rolek (reels.json).';});
+})();
+</script>
+
+<script>
+(function(){
+  function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0].slice(2);}
+  function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+  function tile(big,lab,sub,alert){var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div></div>';}
+  fetch('fb.json').then(function(r){return r.json();}).then(function(F){
+    var tb=document.querySelector('#fb-table tbody');
+    F.forEach(function(p){
+      var tr=document.createElement('tr');
+      function td(cls,txt){var d=document.createElement('td');if(cls)d.className=cls;d.textContent=txt;return d;}
+      tr.appendChild(td('datec',fmt(p.d)));
+      tr.appendChild(td('locc',p.loc||'—'));
+      tr.appendChild(td('capc',p.cap));
+      tr.appendChild(td('num',p.cap.length));
+      tr.appendChild(td('num'+(p.h===0?' zero':''),p.h));
+      tr.appendChild(td('num',p.li));
+      tr.appendChild(td('num'+(p.co===0?' zero':''),p.co));
+      tr.appendChild(td('num',p.sh));
+      tb.appendChild(tr);
+    });
+    var n=F.length,rt=0,sh=0,co=0;
+    F.forEach(function(p){rt+=p.li;sh+=p.sh;co+=p.co;});
+    var el=document.getElementById('fb-summary');
+    if(el)el.textContent='Wszystkie '+n+' posty ze strony na Facebooku, od najnowszego — pełna treść, reakcje, komentarze i udostępnienia.';
+    var agg=document.getElementById('fb-agg');
+    if(agg)agg.innerHTML=
+      tile(n, 'Posty na Facebooku', 'dwa z czerwca 2026, przerwa, dwa z listopada', 'Za mało, nieregularnie')+
+      tile(nf(rt), 'Reakcje razem', 'średnio '+(rt/n).toFixed(1).replace('.',',')+' na post', null)+
+      tile(nf(sh), 'Udostępnienia razem', 'średnio '+(sh/n).toFixed(1).replace('.',',')+' na post', null)+
+      tile(co, 'Komentarze razem', 'zero dyskusji pod postami', 'Pilne do poprawy');
+  }).catch(function(e){var el=document.getElementById('fb-summary');if(el)el.textContent='Nie udało się wczytać danych postów FB (fb.json).';});
 })();
 </script>
 </body>
