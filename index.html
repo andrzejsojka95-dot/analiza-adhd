@@ -11,59 +11,69 @@
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:Arial,Helvetica,sans-serif;line-height:1.55;}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px 80px;}
-  header{padding:44px 0 24px;border-bottom:2px solid var(--line2);}
-  h1{font-size:1.6rem;margin:0 0 8px;line-height:1.25;}
-  .intro{color:var(--soft);margin:0;font-size:.98rem;max-width:62ch;}
-  .date{font-size:.8rem;color:var(--soft);margin:14px 0 0;}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 40px 90px;}
+  @media(max-width:620px){.wrap{padding:0 18px 70px;}}
+  header{padding:46px 0 24px;border-bottom:2px solid var(--line2);}
+  h1{font-size:1.9rem;margin:0 0 10px;line-height:1.2;}
+  .intro{color:var(--soft);margin:0;font-size:1.02rem;max-width:72ch;}
+  .date{font-size:.82rem;color:var(--soft);margin:16px 0 0;}
 
-  .brand{padding:38px 0;border-bottom:1px solid var(--line);}
+  .brand{padding:44px 0;border-bottom:1px solid var(--line);}
   .brand:last-of-type{border-bottom:none;}
-  .kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin:0 0 4px;}
-  h2{font-size:1.3rem;margin:0 0 2px;}
-  .role{margin:0 0 18px;color:var(--soft);font-size:.95rem;}
+  .kicker{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin:0 0 4px;}
+  h2{font-size:1.5rem;margin:0 0 2px;}
+  .role{margin:0 0 20px;color:var(--soft);font-size:.98rem;}
 
-  h3{font-size:.95rem;margin:24px 0 10px;text-transform:uppercase;letter-spacing:.06em;}
+  h3{font-size:1rem;margin:28px 0 10px;text-transform:uppercase;letter-spacing:.06em;}
 
-  .facts{font-size:.88rem;border:1px solid var(--line);margin-bottom:6px;}
-  .facts div{display:flex;gap:14px;padding:9px 12px;border-bottom:1px solid var(--line);}
+  .facts{font-size:.92rem;border:1px solid var(--line);max-width:960px;}
+  .facts div{display:flex;gap:14px;padding:10px 14px;border-bottom:1px solid var(--line);}
   .facts div:last-child{border-bottom:none;}
-  .facts span:first-child{flex:0 0 120px;color:var(--soft);}
+  .facts span:first-child{flex:0 0 130px;color:var(--soft);}
   .facts span:last-child{font-weight:700;min-width:0;}
 
-  /* karty postów */
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  @media(max-width:620px){.cards{grid-template-columns:1fr;}}
-  .card{border:1px solid var(--line);display:flex;min-width:0;}
-  .card .thumb{flex:0 0 118px;width:118px;height:auto;align-self:stretch;
-    background:var(--fill) center/cover no-repeat;border-right:1px solid var(--line);}
-  .card .thumb img{width:118px;height:100%;object-fit:cover;display:block;}
-  .card .body{padding:11px 13px;min-width:0;flex:1;}
-  .card .tophead{display:flex;justify-content:space-between;gap:8px;font-size:.74rem;color:var(--soft);
-    text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
-  .card .excerpt{font-size:.8rem;color:#333;margin:0 0 10px;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  /* karty postów — szeroka siatka, duże zdjęcia */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:22px;}
+  @media(max-width:520px){.cards{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);display:flex;min-width:0;background:#fff;}
+  .card .thumb{flex:0 0 230px;width:230px;align-self:stretch;display:block;position:relative;
+    background:var(--fill);border-right:1px solid var(--line);text-decoration:none;}
+  .card .thumb img{width:230px;height:100%;min-height:230px;object-fit:cover;display:block;}
+  @media(max-width:620px){.card .thumb,.card .thumb img{flex-basis:150px;width:150px;}}
+  a.thumb::after{content:"Zobacz \2197";position:absolute;right:6px;bottom:6px;
+    font-size:.72rem;color:#fff;background:rgba(0,0,0,.7);padding:2px 6px;line-height:1.3;}
+  a.thumb:hover img{opacity:.9;}
+  .card .body{padding:16px 18px;min-width:0;flex:1;display:flex;flex-direction:column;}
+  .card .tophead{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--soft);
+    text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;}
+  .card .excerpt{font-size:.9rem;color:#333;margin:0 0 16px;}
   .card .excerpt.empty{color:#999;font-style:italic;}
 
-  .meter{margin:0 0 8px;}
-  .meter .ml{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:3px;}
+  .meter{margin:0 0 12px;}
+  .meter .ml{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:5px;}
   .meter .ml b{font-variant-numeric:tabular-nums;}
-  .bar{height:7px;background:var(--track);border:1px solid #cfcfcf;position:relative;overflow:hidden;}
+  .bar{height:10px;background:var(--track);border:1px solid #cfcfcf;position:relative;overflow:hidden;}
   .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);display:block;}
-  .tip{font-size:.78rem;border-top:1px dashed var(--line);padding-top:8px;margin-top:2px;}
-  .tip b{font-weight:700;}
 
-  ul{margin:8px 0 0;padding:0;list-style:none;font-size:.9rem;}
-  ul li{padding:7px 0 7px 24px;position:relative;border-bottom:1px solid var(--line);}
+  ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:960px;}
+  ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
-  ul.todo li::before{content:"\2192";position:absolute;left:2px;top:7px;font-weight:700;}
+  ul.todo li::before{content:"\2192";position:absolute;left:2px;top:8px;font-weight:700;}
   b{font-weight:700;}
-
-  .shared{margin-top:38px;padding:20px;border:2px solid var(--line2);background:var(--fill);}
-  .shared h2{font-size:1rem;margin:0 0 10px;}
-  .shared ul li::before{content:"\2192";position:absolute;left:2px;top:7px;font-weight:700;}
-  .legend{font-size:.76rem;color:var(--soft);margin:6px 0 14px;}
+  .legend{font-size:.82rem;color:var(--soft);margin:6px 0 16px;max-width:72ch;}
   a{color:var(--ink);}
+
+  /* oś czasu publikacji */
+  .timeline{position:relative;height:84px;margin:6px 0 2px;max-width:1040px;}
+  .tl-line{position:absolute;left:0;right:0;top:46px;height:2px;background:var(--ink);}
+  .tl-tick{position:absolute;top:46px;transform:translateX(-50%);text-align:center;}
+  .tl-tick i{display:block;width:1px;height:9px;background:#aaa;margin:0 auto;}
+  .tl-tick em{display:block;font-style:normal;font-size:.72rem;color:var(--soft);margin-top:4px;white-space:nowrap;}
+  .tl-dot{position:absolute;top:39px;width:15px;height:15px;border-radius:50%;background:var(--ink);
+    transform:translateX(-50%);border:2px solid #fff;box-shadow:0 0 0 1px #111;}
+  .tl-note{position:absolute;top:6px;font-size:.74rem;color:var(--ink);font-weight:700;
+    transform:translateX(-50%);text-align:center;white-space:nowrap;}
+  .tl-note::after{content:"";position:absolute;left:50%;top:20px;width:1px;height:16px;background:#111;}
 </style>
 </head>
 <body>
@@ -71,7 +81,7 @@
 
   <header>
     <h1>ADHD Creator Media i Make it REEL — przegląd profili</h1>
-    <p class="intro">Jeden zespół, dwie osobne marki. Różne cele, różni odbiorcy — więc każdą opisuję osobno. Przy każdym poście widać, ile z możliwości jest wykorzystane, a ile leży odłogiem (opis i hashtagi).</p>
+    <p class="intro">Jeden zespół, dwie osobne marki. Różne cele, różni odbiorcy — więc każdą opisuję osobno. Przy każdym poście widać, ile z możliwości jest wykorzystane, a ile leży odłogiem (opis i hashtagi). Kliknięcie w zdjęcie otwiera dany post na Instagramie.</p>
     <p class="date">Stan na 22.11.2026</p>
   </header>
 
@@ -87,62 +97,73 @@
       <div><span>Instagram</span><span>@adhdcontentmedia · 4 obserwujących · 5 postów · opis słaby</span></div>
     </div>
 
+    <h3>Kiedy publikują — oś czasu</h3>
+    <p class="legend">Ta sama skala co przy Make it REEL (sierpień–listopad 2026). Każda kropka to post. Widać, że profil ruszył dopiero w połowie listopada i wszystkie 5 postów poszło w 3 dni — jednorazowy zryw zamiast regularności.</p>
+    <div class="timeline">
+      <div class="tl-line"></div>
+      <span class="tl-tick" style="left:0%"><i></i><em>sie</em></span>
+      <span class="tl-tick" style="left:27.4%"><i></i><em>wrz</em></span>
+      <span class="tl-tick" style="left:54%"><i></i><em>paź</em></span>
+      <span class="tl-tick" style="left:81.4%"><i></i><em>lis</em></span>
+      <span class="tl-note" style="left:90%">5 postów w 3 dni</span>
+      <span class="tl-dot" style="left:96.5%"></span>
+      <span class="tl-dot" style="left:97.6%"></span>
+      <span class="tl-dot" style="left:98.2%"></span>
+      <span class="tl-dot" style="left:99.3%"></span>
+      <span class="tl-dot" style="left:100%"></span>
+    </div>
+
     <h3>Posty na Instagramie — co wykorzystane, co nie</h3>
     <p class="legend">Pasek opisu: użyte znaki z limitu 2200. Pasek hashtagów: użyte z 30 możliwych. Im więcej bieli, tym więcej niewykorzystanego miejsca.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="thumb"><img src="img/adhd-1.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7II4VonNK/" target="_blank" rel="noopener"><img src="img/adhd-1.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Post</span><span>21.11</span></div>
-          <p class="excerpt">„Jesteśmy zespołem kreatywnych twórców contentu, którzy pomagają firmom…"</p>
+          <p class="excerpt">„Jesteśmy zespołem kreatywnych twórców contentu, którzy pomagają firmom budować silny wizerunek…"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>1826 / 2200</b></div><div class="bar"><i style="width:83%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip"><b>Odwrotny problem:</b> tekst „o nas" jest za długi na post — jego miejsce to opis profilu. Dodaj hashtagi.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/adhd-2.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7IHAFIIZZ/" target="_blank" rel="noopener"><img src="img/adhd-2.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Post</span><span>19.11</span></div>
           <p class="excerpt empty">Brak opisu</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>0 / 2200</b></div><div class="bar"><i style="width:0%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip"><b>Puste pole:</b> żadnego opisu ani hashtagu — post nie dotrze do nikogo poza obecnymi 4 osobami.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/adhd-3.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7IN-AoWVg/" target="_blank" rel="noopener"><img src="img/adhd-3.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Post</span><span>19.11</span></div>
           <p class="excerpt empty">Brak opisu</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>0 / 2200</b></div><div class="bar"><i style="width:0%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip"><b>Puste pole:</b> to samo co wyżej — opis i hashtagi do dodania.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/adhd-4.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df9pD5WI_9s/" target="_blank" rel="noopener"><img src="img/adhd-4.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Post</span><span>20.11</span></div>
-          <p class="excerpt">„Nie musisz mieć gotowego pomysłu, scenariusza… Od tego jesteśmy my!"</p>
+          <p class="excerpt">„Nie musisz mieć gotowego pomysłu, scenariusza ani wiedzieć, jak powinny wyglądać Twoje rolki. Od tego jesteśmy my!"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>785 / 2200</b></div><div class="bar"><i style="width:36%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip"><b>Dobry opis, 0 hashtagów:</b> bez nich i tak nikt nowy go nie zobaczy. Dołóż 10–20 trafnych.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/adhd-5.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/reel/Df9kTkeI6b_/" target="_blank" rel="noopener"><img src="img/adhd-5.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>20.11</span></div>
-          <p class="excerpt">„🏡 Pokaż swoją inwestycję z zupełnie innej perspektywy!…"</p>
+          <p class="excerpt">„🏡 Pokaż swoją inwestycję z zupełnie innej perspektywy! Dobrze przygotowana rolka to coś więcej niż zwykłe nagranie…"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>791 / 2200</b></div><div class="bar"><i style="width:36%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>5 / 30</b></div><div class="bar"><i style="width:17%"></i></div></div>
-          <p class="tip"><b>Najlepszy z pięciu:</b> jedyny z hashtagami. Dociągnij do ~15–20 i tak rób w każdym poście.</p>
         </div>
       </div>
 
@@ -170,67 +191,77 @@
       <div><span>Zasięg</span><span>Lubelskie / Małopolskie / Podkarpacie · strona www: brak</span></div>
     </div>
 
+    <h3>Kiedy publikują — oś czasu</h3>
+    <p class="legend">Kropki to posty z próbki (6 z 47). Rozłożone przez sierpień–listopad — profil publikuje regularnie, mniej więcej co 1–3 tygodnie.</p>
+    <div class="timeline">
+      <div class="tl-line"></div>
+      <span class="tl-tick" style="left:0%"><i></i><em>sie</em></span>
+      <span class="tl-tick" style="left:27.4%"><i></i><em>wrz</em></span>
+      <span class="tl-tick" style="left:54%"><i></i><em>paź</em></span>
+      <span class="tl-tick" style="left:81.4%"><i></i><em>lis</em></span>
+      <span class="tl-dot" style="left:19.5%"></span>
+      <span class="tl-dot" style="left:42.5%"></span>
+      <span class="tl-dot" style="left:54%"></span>
+      <span class="tl-dot" style="left:57.5%"></span>
+      <span class="tl-dot" style="left:66%"></span>
+      <span class="tl-dot" style="left:99%"></span>
+    </div>
+
     <h3>Ostatnie rolki — co wykorzystane, co nie</h3>
     <p class="legend">Profil żyje i ma odbiorców. Widać jednak, że hashtagi są prawie nieużywane — a to przy ślubach najtańszy zasięg do narzeczonych.</p>
     <div class="cards">
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-1.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DcYhoiJIs3x/" target="_blank" rel="noopener"><img src="img/reel-1.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>23.08</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>146 / 2200</b></div><div class="bar"><i style="width:7%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip">Krótki opis, 0 hashtagów. Dodaj lokalne: #ślub, #wesele + miejscowość.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-2.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/Ddb3gC1o4X_/" target="_blank" rel="noopener"><img src="img/reel-2.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>18.09</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>176 / 2200</b></div><div class="bar"><i style="width:8%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip">To samo: dobra rolka, zero hashtagów = zasięg tylko do obecnych obserwujących.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-3.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/Dd91pGFoeHi/" target="_blank" rel="noopener"><img src="img/reel-3.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>01.10</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>157 / 2200</b></div><div class="bar"><i style="width:7%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip">Opis można rozbudować: para, miejsce, co oferujecie, zachęta do kontaktu.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-4.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeGuLP9oPAl/" target="_blank" rel="noopener"><img src="img/reel-4.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>05.10</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>565 / 2200</b></div><div class="bar"><i style="width:26%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <p class="tip">Najlepszy opis z próbki — szkoda, że bez hashtagów. Dołóż 10–15.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-5.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeheFdjo5JJ/" target="_blank" rel="noopener"><img src="img/reel-5.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>15.10</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>236 / 2200</b></div><div class="bar"><i style="width:11%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>4 / 30</b></div><div class="bar"><i style="width:13%"></i></div></div>
-          <p class="tip">Są hashtagi (4) — to dobry kierunek. Zwiększ do ~15 i rób tak za każdym razem.</p>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb"><img src="img/reel-6.jpg" alt=""></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DgAUt4oIDec/" target="_blank" rel="noopener"><img src="img/reel-6.jpg" alt=""></a>
         <div class="body">
           <div class="tophead"><span>Rolka</span><span>21.11</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>463 / 2200</b></div><div class="bar"><i style="width:21%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>2 / 30</b></div><div class="bar"><i style="width:7%"></i></div></div>
-          <p class="tip">Najnowsza rolka, a hashtagi wróciły prawie do zera. Ustal stały zestaw 15–20.</p>
         </div>
       </div>
 
@@ -245,15 +276,6 @@
       <li>Konkretniejszy opis profilu: co, dla kogo, gdzie, jak się umówić.</li>
     </ul>
   </section>
-
-  <!-- WSPÓLNE -->
-  <div class="shared">
-    <h2>Wspólne dla obu marek</h2>
-    <ul class="todo">
-      <li>Produkcja wideo jest mocna. Słaba strona to dotarcie: hashtagi, regularność, strona www i prosty kontakt.</li>
-      <li>Największa rezerwa leży w dystrybucji — dobre materiały trafiają dziś do zbyt małej liczby osób.</li>
-    </ul>
-  </div>
 
 </div>
 </body>
