@@ -360,7 +360,7 @@
   function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
   function tile(big,lab,sub,pct,alert){var bar=(pct==null)?'':'<div class="mini-bar"><i style="width:'+pct+'%"></i></div>';var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div>'+bar+'</div>';}
   function build(cfg){
-    fetch(cfg.src).then(function(r){return r.json();}).then(function(R){
+    fetch(cfg.src+'?v=3').then(function(r){return r.json();}).then(function(R){
       var tb=document.querySelector(cfg.table+' tbody');
       R.forEach(function(p){
         var tr=document.createElement('tr');
@@ -410,7 +410,7 @@
   function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
   function tile(big,lab,sub,alert){var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div></div>';}
   var FBPAGE='https://www.facebook.com/people/ADHD-Creator-Media/61590514929796/';
-  fetch('fb.json').then(function(r){return r.json();}).then(function(F){
+  fetch('fb.json?v=3').then(function(r){return r.json();}).then(function(F){
     var tb=document.querySelector('#fb-table tbody');
     F.forEach(function(p,idx){
       var tr=document.createElement('tr');
