@@ -10,7 +10,7 @@
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55;}
-  .wrap{max-width:1440px;margin:0 auto;padding:0 40px 90px;}
+  .wrap{max-width:1600px;margin:0 auto;padding:0 40px 90px;}
   @media(max-width:620px){.wrap{padding:0 18px 70px;}}
   header{padding:46px 0 24px;border-bottom:2px solid var(--line2);}
   h1{font-size:1.9rem;margin:0 0 10px;line-height:1.2;}
@@ -75,7 +75,7 @@
   .tablewrap{overflow-x:auto;border:1px solid var(--line);}
   table#reel-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1020px;}
   #reel-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;
-    font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
+    font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;}
   #reel-table th.num,#reel-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
   #reel-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle;}
   #reel-table tr:hover td{background:#fafafa;}
@@ -101,7 +101,12 @@
     text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:9px;}
   #reel-table td.rem{color:var(--alert);font-weight:700;}
   #fb-table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:900px;}
-  #fb-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
+  #fb-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;}
+  #fb-table td.thumbc{width:168px;}
+  #fb-table td.thumbc a{display:block;position:relative;}
+  #fb-table td.thumbc img{width:158px;height:158px;object-fit:cover;border:1px solid #111;display:block;background:var(--fill);}
+  #fb-table td{vertical-align:middle;}
+  @media(max-width:620px){#fb-table td.thumbc{width:108px;}#fb-table td.thumbc img{width:100px;height:100px;}}
   #fb-table th.num,#fb-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
   #fb-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
   #fb-table tr:hover td{background:#fafafa;}
@@ -199,15 +204,15 @@
       <span class="ic"><svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#111" stroke-width="2"/><circle cx="20" cy="12.5" r="2.3" fill="#111"/><rect x="18" y="17.5" width="4" height="13.5" rx="1.2" fill="#111"/></svg></span>
       <div class="c">
         <h4>Czym różni się Facebook od Instagrama</h4>
-        <p>Facebook <b>nie ma napiętego limitu znaków</b> w poście (ok. 63 000), więc nie liczymy tu „ile zostało" jak na Instagramie. Na FB liczy się przede wszystkim <b>regularność, reakcje, komentarze i udostępnienia</b>. Miniatur postów Facebook nie udostępnia publicznie tak jak Instagram, dlatego tu ich nie ma.</p>
+        <p>Facebook <b>nie ma napiętego limitu znaków</b> w poście (ok. 63 000), więc nie liczymy tu „ile zostało" jak na Instagramie. Na FB liczy się przede wszystkim <b>regularność, reakcje, komentarze i udostępnienia</b>. Miniatury to zrzuty postów (kliknięcie otwiera fanpage).</p>
       </div>
     </div>
     <div class="tablewrap">
       <table id="fb-table">
         <thead><tr>
-          <th>Data</th><th>Miejsce</th><th>Pełny opis</th>
-          <th class="num">Znaki</th><th class="num">Hash-<br>tagi</th>
-          <th class="num">Reakcje</th><th class="num">Komen-<br>tarze</th><th class="num">Udostęp-<br>nienia</th>
+          <th>Post</th><th>Data</th><th>Miejsce</th><th>Pełny opis</th>
+          <th class="num">Znaki</th><th class="num">Hashtagi</th>
+          <th class="num">Reakcje</th><th class="num">Komentarze</th><th class="num">Udostępnienia</th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -256,9 +261,9 @@
       <table id="reel-table">
         <thead><tr>
           <th>Rolka</th><th>Data</th><th>Pełny opis</th>
-          <th class="num">Znaki<br>/ 2200</th><th class="num">Zostało<br>znaków</th>
-          <th class="num">Hash-<br>tagi</th><th class="num">Zostało<br>hashtagów</th>
-          <th class="num">Polu-<br>bienia</th><th class="num">Komen-<br>tarze</th>
+          <th class="num">Znaki / 2200</th><th class="num">Zostało znaków</th>
+          <th class="num">Hashtagi</th><th class="num">Zostało hashtagów</th>
+          <th class="num">Polubienia</th><th class="num">Komentarze</th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -413,11 +418,16 @@
   function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0].slice(2);}
   function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
   function tile(big,lab,sub,alert){var bd=alert?'<div class="badge">'+alert+'</div>':'';return '<div class="tile'+(alert?' alert':'')+'">'+bd+'<div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div></div>';}
+  var FBPAGE='https://www.facebook.com/people/ADHD-Creator-Media/61590514929796/';
   fetch('fb.json').then(function(r){return r.json();}).then(function(F){
     var tb=document.querySelector('#fb-table tbody');
-    F.forEach(function(p){
+    F.forEach(function(p,idx){
       var tr=document.createElement('tr');
       function td(cls,txt){var d=document.createElement('td');if(cls)d.className=cls;d.textContent=txt;return d;}
+      var tdp=document.createElement('td');tdp.className='thumbc';
+      var a=document.createElement('a');a.href=FBPAGE;a.target='_blank';a.rel='noopener';
+      var im=document.createElement('img');im.src='img/fb/post'+(idx+1)+'.png';im.alt='';im.loading='lazy';a.appendChild(im);tdp.appendChild(a);
+      tr.appendChild(tdp);
       tr.appendChild(td('datec',fmt(p.d)));
       tr.appendChild(td('locc',p.loc||'—'));
       tr.appendChild(td('capc',p.cap));
