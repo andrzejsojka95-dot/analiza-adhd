@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Przegląd profili — ADHD Creator Media i Make it REEL</title>
+<title>Audyt i Raport Marketingowy — ADHD Creator Media i Make it REEL</title>
 <style>
   :root{ --ink:#111; --soft:#666; --line:#dcdcdc; --line2:#111; --bg:#fff; --fill:#f2f2f2; --track:#e6e6e6; --alert:#c0261f; --alert-soft:#c0261f10; }
   *{box-sizing:border-box}
@@ -147,18 +147,95 @@
   .tip.open .chev{transform:rotate(90deg);}
   .tip .tip-body{display:none;padding:0 16px 15px 50px;font-size:.93rem;line-height:1.55;color:#222;}
   .tip.open .tip-body{display:block;}
+
+  /* Badge tags */
+  .badge-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;margin-bottom:6px;}
+  .badge-tag.alert{background:var(--alert);color:#fff;}
+  .badge-tag.warn{background:#333;color:#fff;}
+  .badge-tag.ok{background:#0b7a3e;color:#fff;}
+
+  /* Diagnoza & Audyt kart */
+  .diag-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:16px;margin:14px 0 22px;}
+  .diag-card{border:1px solid var(--line);background:#fff;padding:18px 20px;}
+  .diag-card.alert{border:2px solid var(--alert);background:var(--alert-soft);}
+  .diag-card h4{margin:6px 0 8px;font-size:1.02rem;}
+  .diag-card p{margin:0;font-size:.9rem;line-height:1.5;color:#222;}
+
+  .audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:12px 0 24px;}
+  @media(max-width:760px){.audit-grid{grid-template-columns:1fr;}}
+  .audit-card{border:1px solid var(--line);background:#fff;padding:18px 20px;}
+  .audit-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:12px;color:var(--soft);}
+  .audit-list{margin:0;padding:0;list-style:none;font-size:.9rem;}
+  .audit-list li{position:relative;padding:6px 0 6px 22px;border-bottom:1px solid #f0f0f0;line-height:1.45;}
+  .audit-list li:last-child{border-bottom:none;}
+  .audit-list.bad li::before{content:"\2715";position:absolute;left:0;color:var(--alert);font-weight:700;}
+  .audit-list.good li::before{content:"\2713";position:absolute;left:0;color:#0b7a3e;font-weight:700;}
+
+  /* Roadmap plan */
+  .roadmap{display:flex;flex-direction:column;gap:16px;margin:16px 0;}
+  .road-step{border:1px solid var(--line);background:#fff;padding:20px 24px;}
+  .road-step .step-num{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:700;}
+  .road-step .step-head{display:flex;align-items:center;gap:12px;margin:6px 0 12px;flex-wrap:wrap;}
+  .road-step .step-head h4{margin:0;font-size:1.1rem;font-weight:700;}
+  .road-step ul{margin:0;padding:0;list-style:none;font-size:.92rem;}
+  .road-step ul li{position:relative;padding:6px 0 6px 22px;border-bottom:1px solid #f2f2f2;line-height:1.5;}
+  .road-step ul li:last-child{border-bottom:none;}
+  .road-step ul li::before{content:"\2192";position:absolute;left:0;font-weight:700;color:var(--ink);}
+
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <nav class="topnav">
+    <a href="#diagnoza" class="bl">Podsumowanie & Diagnoza</a>
+    <span class="sep">|</span>
     <a href="#adhd" class="bl">ADHD Creator Media</a>
     <a href="#adhd-ig">Instagram</a><span class="sep">·</span><a href="#adhd-fb">Facebook</a>
     <span class="sep">|</span>
     <a href="#reel" class="bl">Make it REEL</a>
     <a href="#reel-ig">Instagram</a>
+    <span class="sep">|</span>
+    <a href="#plan" class="bl">Plan Naprawczy</a>
   </nav>
+
+  <!-- PODSUMOWANIE & DIAGNOZA -->
+  <section class="brand" id="diagnoza" style="padding-top:32px;">
+    <p class="kicker">Audyt Strategiczny · Podsumowanie Menedżerskie</p>
+    <h2>Diagnoza i kluczowe wąskie gardła</h2>
+    <p class="role">Podsumowanie audytu dla obu marek: gdzie tracony jest ruch organiczny, zaangażowanie i zapytania ofertowe.</p>
+
+    <div class="diag-grid">
+      <div class="diag-card alert">
+        <span class="badge-tag alert">Krytyczne</span>
+        <h4>1. Dziurawy lejek konwersji (Brak WWW i formularza)</h4>
+        <p>Żaden z profili nie posiada linku w BIO (brak strony www, brak profilu Linktree, brak formularza Tally). Widz oglądający rolkę nie ma jak sprawdzić wolnego terminu ani wysłać zapytania o ofertę. Zainteresowanie nie przekłada się na sprzedaż.</p>
+      </div>
+
+      <div class="diag-card alert">
+        <span class="badge-tag alert">Krytyczne</span>
+        <h4>2. Niewidzialność dla wyszukiwarki (34 z 45 rolek bez hashtagów)</h4>
+        <p>Aż <b>75% rolek w Make it REEL</b> nie zawiera ani jednego hashtagu ani słów kluczowych w opisie. Algorytm Meta nie wie, jak sklasyfikować te wideo, przez co nie wyświetla ich parom młodym szukającym kamerzysty w Małopolsce i Podkarpaciu.</p>
+      </div>
+
+      <div class="diag-card">
+        <span class="badge-tag warn">Do wdrożenia</span>
+        <h4>3. Zerowe zaangażowanie społeczności (0 komentarzy)</h4>
+        <p>Wszystkie posty kończą się suchym komunikatem — brakuje pytań otwartych zachęcających do dyskusji. Algorytm promuje posty z komentarzami. Bez wezwania do rozmowy posty zatrzymują się na 2–3 polubieniach.</p>
+      </div>
+    </div>
+
+    <div class="infobox">
+      <div class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      </div>
+      <div class="c">
+        <h4>Ważna uwaga metodologiczna: Limit 2200 znaków i 30 hashtagów</h4>
+        <p>Na Instagramie limity 2200 znaków i 30 hashtagów to <b>sufit techniczny, a nie cel do wypełnienia</b>. W rolkach (Reels) optymalna długość opisu to <b>150–350 znaków z mocnym wezwaniem do działania (CTA)</b> — ściana tekstu zabija retencję. Z kolei algorytm Instagrama promuje <b>3–5 precyzyjnych, niszowych hashtagów lokalnych</b> zamiast 30 przypadkowych. Błędem nie jest zwięzły opis, lecz <b>całkowity brak słów kluczowych i brak wezwania do akcji</b>.</p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- MARKA 1 -->
   <section class="brand" id="adhd">
@@ -170,6 +247,29 @@
     <div class="facts">
       <div><span>Facebook</span><span><a href="https://www.facebook.com/people/ADHD-Creator-Media/61590514929796/" target="_blank" rel="noopener">ADHD Creator Media</a> · 322 obserwujących · opis dobry · kategoria „agencja marketingowa" · 0 opinii · Tarnów</span></div>
       <div><span>Instagram</span><span><a href="https://www.instagram.com/adhdcontentmedia/" target="_blank" rel="noopener">@adhdcontentmedia</a> · 4 obserwujących · 5 postów · opis słaby</span></div>
+    </div>
+
+    <h3>Audyt Profilu & Lejka Sprzedażowego — ADHD Creator Media</h3>
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-title">Stan obecny (Status quo)</div>
+        <ul class="audit-list bad">
+          <li>Profil IG dopiero wystartował (4 obs.), brak widoczności organicznej.</li>
+          <li>Opis BIO jest zbyt ogólny — brak jasnej obietnicy biznesowej dla firm.</li>
+          <li>Brak Wyróżnionych Relacji (Stories Highlights) — profil wygląda na uśpiony.</li>
+          <li>Brak linku w BIO: brak portfolio wideo, cennika pakietów i formularza zapytania.</li>
+          <li>Na FB oferta „Pierwsza rolka gratis” miała 10 udostępnień, ale brakowało follow-upu.</li>
+        </ul>
+      </div>
+      <div class="audit-card">
+        <div class="audit-title">Rekomendowane zmiany (B2B)</div>
+        <ul class="audit-list good">
+          <li>Przebudować BIO: „Krótkie formy wideo (Reels/TikTok), które sprzedają Twoje usługi. 🎥 Dron | 🚀 Kampanie lokalne”.</li>
+          <li>Wdrożyć Linktree / prosty formularz: „Zgłoś firmę po darmową rolkę testową”.</li>
+          <li>Dodać 4 kafelki Highlights: <b>[Darmowa Rolka] [Dla kogo?] [Sprzęt/Dron] [Opinie]</b>.</li>
+          <li>Publikować Case Studies: krótkie zestawienia „jak rolka pomogła klientowi X z branży Y”.</li>
+        </ul>
+      </div>
     </div>
 
     <h3>Oś czasu publikacji</h3>
@@ -221,6 +321,29 @@
       <div><span>Hashtagi</span><span>34 z 45 rolek bez żadnego hashtagu · najwięcej użytych naraz: 4 (z możliwych 30)</span></div>
       <div><span>Aktywność</span><span>Start wrzesień 2025 · przerwa grudzień 2025 – kwiecień 2026 · od lata 2026 regularnie</span></div>
       <div><span>Zasięg</span><span>Lubelskie / Małopolskie / Podkarpacie · strona www: brak</span></div>
+    </div>
+
+    <h3>Audyt Profilu & Lejka Sprzedażowego — Make it REEL</h3>
+    <div class="audit-grid">
+      <div class="audit-card">
+        <div class="audit-title">Stan obecny (Status quo)</div>
+        <ul class="audit-list bad">
+          <li>Wysoka jakość estetyczna wideo (45 rolek w portfolio), ale profil nie generuje leadów.</li>
+          <li>Aż <b>34 z 45 rolek nie ma ANI JEDNEGO hashtagu</b> — całkowicie odcięte SEO.</li>
+          <li>Brak strony WWW i brak formularza: para młoda nie wie, czy ich termin jest wolny.</li>
+          <li>Opisy są jednozdaniowe, bez wezwania do akcji (CTA: „Napisz po ofertę na 2026 w DM”).</li>
+          <li>Brak tagowania sal weselnych, fotografów i DJ-ów jako współtwórców (Collab).</li>
+        </ul>
+      </div>
+      <div class="audit-card">
+        <div class="audit-title">Rekomendowane zmiany (Śluby / Eventy)</div>
+        <ul class="audit-list good">
+          <li>Każdą rolkę z wesela publikować jako <b>Collab z salą weselną i parą młodą</b> (dostęp do bazy ich gości).</li>
+          <li>Pod każdą rolkę dodawać 3–5 celowanych hashtagów: <code>#kamerzystatarnow #filmslubny #wesele2026 #kamerzystamalopolska</code>.</li>
+          <li>Wdrożyć Link-in-Bio z ankietą: „Sprawdź dostępność swojego terminu w 2026/2027”.</li>
+          <li>Wyróżnione relacje (Highlights): <b>[Cennik/Pakiety] [Wolne Terminy] [Opinie Par] [O nas]</b>.</li>
+        </ul>
+      </div>
     </div>
 
     <h3>Oś czasu publikacji — wszystkie 45 rolek</h3>
@@ -380,19 +503,18 @@
       collapseTable(cfg.table, 6);
       var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0,sumht=0;
       R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;sumht+=p.h||0;});
-      var capPoss=n*2200, htPoss=n*30;
-      var capPct=Math.round(sumcap/capPoss*100), htPct=Math.round(sumht/htPoss*100);
+      var avgCap=Math.round(sumcap/n);
+      var noHashtagPct=Math.round((noh/n)*100);
       var el=document.querySelector(cfg.summary);
       if(el)el.textContent=cfg.summaryText(n);
       var agg=document.querySelector(cfg.agg);
       if(agg)agg.innerHTML=
-        tile(nf(sumcap)+' / '+nf(capPoss),'Znaki opisów',capPct+'% limitu — do wykorzystania jeszcze '+nf(capPoss-sumcap)+' znaków',capPct,'Pilne do poprawy')+
-        tile(nf(sumht)+' / '+nf(htPoss),'Hashtagi',htPct+'% limitu — do wykorzystania jeszcze '+nf(htPoss-sumht)+' hashtagów · '+noh+' z '+n+' bez żadnego',htPct,'Pilne do poprawy')+
-        tile(nf(sl),'Polubienia razem','średnio '+Math.round(sl/n)+' na '+cfg.one+' · rekord '+maxl,null)+
-        tile(nf(sc),'Komentarze razem',(sc===0?'zero komentarzy pod postami':'średnio '+(sc/n).toFixed(1).replace('.',',')+' na '+cfg.one),(sc===0?'Pilne do poprawy':null));
-      var maxed=R.filter(function(p){return (p.l||0)>=2200 || (p.h||0)>=30;}).length;
+        tile(avgCap+' zn.','Średnia długość opisu','dla rolek optymalne 150–350 zn. z jasnym CTA',null,null)+
+        tile(noh+' z '+n,'Posty bez żadnego hashtagu',noHashtagPct+'% postów niewidoczne w wyszukiwarce IG',noHashtagPct,(noh>0?'Krytyczne':null))+
+        tile(nf(sl),'Polubienia razem','średnio '+Math.round(sl/n)+' na '+cfg.one+' · rekord '+maxl,null,null)+
+        tile(nf(sc),'Komentarze razem',(sc===0?'zero komentarzy — brak pytań w opisach':'średnio '+(sc/n).toFixed(1).replace('.',',')+' na '+cfg.one),null,(sc===0?'Pilne do poprawy':null));
       var mx=document.querySelector(cfg.maxed);
-      if(mx)mx.innerHTML='<div class="num">'+maxed+'!</div><div class="txt"><b>'+maxed+' z '+n+'</b> '+cfg.word+' wykorzystało pełny limit — ani 2200 znaków, ani 30 hashtagów nie osiągnął żaden post. Wszędzie jest niewykorzystany zapas.</div>';
+      if(mx)mx.innerHTML='<div class="num">'+noh+'!</div><div class="txt"><b>'+noh+' z '+n+' '+cfg.word+'</b> opublikowano <b>bez ani jednego hashtagu</b>. Pamiętaj: limit 2200 znaków i 30 hashtagów to sufit techniczny, nie cel — w rolkach kluczem jest chwytliwy hook, 150–350 znaków, CTA oraz <b>3–5 precyzyjnych hashtagów lokalnych/branżowych</b>.</div>';
     }).catch(function(e){var el=document.querySelector(cfg.summary);if(el)el.textContent='Nie udało się wczytać danych ('+cfg.src+').';});
   }
   build({src:'reels.json',table:'#reel-table',summary:'#reel-summary',agg:'#reel-agg',maxed:'#reel-maxed',word:'rolek',one:'rolkę',
