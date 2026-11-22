@@ -8,7 +8,7 @@
 <style>
   :root{ --ink:#111; --soft:#666; --line:#dcdcdc; --line2:#111; --bg:#fff; --fill:#f2f2f2; --track:#e6e6e6; --alert:#c0261f; --alert-soft:#c0261f10; }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55;}
   .wrap{max-width:1600px;margin:0 auto;padding:0 40px 90px;}
   @media(max-width:620px){.wrap{padding:0 18px 70px;}}
@@ -135,7 +135,11 @@
   nav.topnav a.bl{text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--line2);}
   nav.topnav a.bl:hover{border-bottom-color:var(--alert);}
   nav.topnav .sep{color:var(--line);}
-  section.brand{scroll-margin-top:72px;}
+  section.brand{scroll-margin-top:76px;}
+
+  section#plan{min-height:92vh;padding-bottom:140px;scroll-margin-top:76px;}
+  section#diagnoza{scroll-margin-top:76px;}
+
   h3[id]{scroll-margin-top:72px;}
   /* klikalny tip (pełna szerokość) */
   .tip{display:block;width:100%;text-align:left;border:1px solid var(--line2);background:var(--fill);
