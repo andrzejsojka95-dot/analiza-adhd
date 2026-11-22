@@ -14,7 +14,7 @@
   @media(max-width:620px){.wrap{padding:0 18px 70px;}}
   header{padding:46px 0 24px;border-bottom:2px solid var(--line2);}
   h1{font-size:1.9rem;margin:0 0 10px;line-height:1.2;}
-  .intro{color:var(--soft);margin:0;font-size:1.02rem;max-width:72ch;}
+  .intro{color:var(--soft);margin:0;font-size:1.02rem;max-width:74ch;}
   .date{font-size:.82rem;color:var(--soft);margin:16px 0 0;}
 
   .brand{padding:44px 0;border-bottom:1px solid var(--line);}
@@ -24,35 +24,33 @@
   .role{margin:0 0 20px;color:var(--soft);font-size:.98rem;}
   h3{font-size:1rem;margin:30px 0 10px;text-transform:uppercase;letter-spacing:.06em;}
 
-  .facts{font-size:.92rem;border:1px solid var(--line);max-width:960px;}
+  .facts{font-size:.92rem;border:1px solid var(--line);max-width:1000px;}
   .facts div{display:flex;gap:14px;padding:10px 14px;border-bottom:1px solid var(--line);}
   .facts div:last-child{border-bottom:none;}
   .facts span:first-child{flex:0 0 130px;color:var(--soft);}
   .facts span:last-child{font-weight:700;min-width:0;}
-  .legend{font-size:.82rem;color:var(--soft);margin:6px 0 14px;max-width:78ch;}
+  .legend{font-size:.82rem;color:var(--soft);margin:6px 0 14px;max-width:84ch;}
 
-  /* INTERAKTYWNA OŚ CZASU */
   .tlx{position:relative;width:100%;border:1px solid var(--line);background:#fff;padding:0 10px;overflow:hidden;}
   .tlx .axis{position:absolute;left:10px;right:10px;height:2px;background:var(--ink);}
-  .tlx .grid{position:absolute;width:1px;background:#eee;top:12px;}
+  .tlx .grid{position:absolute;width:1px;background:#eee;top:10px;}
   .tlx .mtick{position:absolute;transform:translateX(-50%);text-align:center;}
   .tlx .mtick i{display:block;width:1px;height:7px;background:#aaa;margin:0 auto;}
-  .tlx .mtick em{display:block;font-style:normal;font-size:.72rem;color:var(--soft);margin-top:3px;}
-  .tlx .stem{position:absolute;width:1px;background:#c4c4c4;}
-  .tlx .pt{position:absolute;width:58px;text-decoration:none;display:block;}
-  .tlx .pt img{width:58px;height:58px;object-fit:cover;border:1px solid #111;display:block;background:var(--fill);transition:transform .12s ease;}
-  .tlx .pt .dl{display:block;text-align:center;font-size:.68rem;color:var(--soft);margin-top:3px;white-space:nowrap;}
-  .tlx .pt:hover img{transform:scale(1.18);}
-  .tlx .pt.badge-0 img{outline:2px solid #111;outline-offset:1px;}
+  .tlx .mtick em{display:block;font-style:normal;font-size:.68rem;color:var(--soft);margin-top:3px;white-space:nowrap;}
+  .tlx .stem{position:absolute;width:1px;background:#cfcfcf;}
+  .tlx .pt{position:absolute;display:block;width:13px;height:13px;border-radius:50%;
+    background:#fff;border:2px solid #111;text-decoration:none;transition:transform .1s ease;}
+  .tlx .pt.hasht{background:#111;}
+  .tlx .pt:hover{transform:scale(1.5);z-index:6;}
 
   .tltip{position:fixed;z-index:60;background:#111;color:#fff;padding:9px 11px;font-size:.72rem;width:185px;
     pointer-events:none;display:none;box-shadow:0 4px 14px rgba(0,0,0,.3);}
+  .tltip img{width:100%;height:120px;object-fit:cover;display:block;margin-bottom:7px;}
   .tltip .h{font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;gap:8px;}
   .tltip .row{display:flex;justify-content:space-between;margin:7px 0 3px;}
   .tltip .tb{height:6px;background:#3a3a3a;position:relative;}
   .tltip .tb i{position:absolute;left:0;top:0;bottom:0;background:#fff;}
 
-  /* karty szczegółowe */
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:22px;}
   @media(max-width:520px){.cards{grid-template-columns:1fr;}}
   .card{border:1px solid var(--line);display:flex;min-width:0;background:#fff;}
@@ -74,7 +72,7 @@
   .bar{height:10px;background:var(--track);border:1px solid #cfcfcf;position:relative;overflow:hidden;}
   .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);display:block;}
 
-  ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:960px;}
+  ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:1000px;}
   ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
   ul.todo li::before{content:"\2192";position:absolute;left:2px;top:8px;font-weight:700;}
@@ -87,7 +85,7 @@
 
   <header>
     <h1>ADHD Creator Media i Make it REEL — przegląd profili</h1>
-    <p class="intro">Jeden zespół, dwie osobne marki. Różne cele, różni odbiorcy — więc każdą opisuję osobno. Oś czasu pokazuje, kiedy wychodzą posty (najedź na miniaturę po szczegóły, kliknij, by otworzyć post). Niżej każdy post z osobna: ile z opisu i hashtagów jest wykorzystane.</p>
+    <p class="intro">Jeden zespół, dwie osobne marki. Różne cele, różni odbiorcy — więc każdą opisuję osobno. Oś czasu pokazuje każdą publikację w dniu, w którym wyszła (najedź na miniaturę po szczegóły, kliknij, by otworzyć post). Niżej wybrane posty z osobna: ile z opisu i hashtagów jest wykorzystane.</p>
     <p class="date">Stan na 22.11.2026</p>
   </header>
 
@@ -104,55 +102,45 @@
     </div>
 
     <h3>Oś czasu publikacji</h3>
-    <p class="legend">Skala sierpień–listopad 2026, taka sama jak przy Make it REEL. Wszystkie 5 postów stoi w jednym miejscu — profil ruszył dopiero w połowie listopada i cała zawartość poszła w 3 dni.</p>
+    <p class="legend">Ta sama skala co przy Make it REEL (wrzesień 2025 – listopad 2026). ADHD to świeży profil — wszystkie 5 postów stoi na samym końcu osi, w 3 dniach listopada. Reszta osi jest pusta, bo wcześniej nic tu nie było.</p>
     <div class="tlx" id="tl-adhd" data-set="adhd"></div>
 
     <h3>Posty na Instagramie — co wykorzystane, co nie</h3>
     <div class="cards">
       <div class="card">
         <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7II4VonNK/" target="_blank" rel="noopener"><img src="img/adhd-1.jpg" alt=""></a>
-        <div class="body">
-          <div class="tophead"><span>Post</span><span>21.11</span></div>
+        <div class="body"><div class="tophead"><span>Post</span><span>21.11</span></div>
           <p class="excerpt">„Jesteśmy zespołem kreatywnych twórców contentu, którzy pomagają firmom budować silny wizerunek…"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>1826 / 2200</b></div><div class="bar"><i style="width:83%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-        </div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
       <div class="card">
         <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7IHAFIIZZ/" target="_blank" rel="noopener"><img src="img/adhd-2.jpg" alt=""></a>
-        <div class="body">
-          <div class="tophead"><span>Post</span><span>19.11</span></div>
+        <div class="body"><div class="tophead"><span>Post</span><span>19.11</span></div>
           <p class="excerpt empty">Brak opisu</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>0 / 2200</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-        </div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
       <div class="card">
         <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df7IN-AoWVg/" target="_blank" rel="noopener"><img src="img/adhd-3.jpg" alt=""></a>
-        <div class="body">
-          <div class="tophead"><span>Post</span><span>19.11</span></div>
+        <div class="body"><div class="tophead"><span>Post</span><span>19.11</span></div>
           <p class="excerpt empty">Brak opisu</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>0 / 2200</b></div><div class="bar"><i style="width:0%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-        </div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
       <div class="card">
         <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/p/Df9pD5WI_9s/" target="_blank" rel="noopener"><img src="img/adhd-4.jpg" alt=""></a>
-        <div class="body">
-          <div class="tophead"><span>Post</span><span>20.11</span></div>
+        <div class="body"><div class="tophead"><span>Post</span><span>20.11</span></div>
           <p class="excerpt">„Nie musisz mieć gotowego pomysłu, scenariusza ani wiedzieć, jak powinny wyglądać Twoje rolki. Od tego jesteśmy my!"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>785 / 2200</b></div><div class="bar"><i style="width:36%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div>
-        </div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
       <div class="card">
         <a class="thumb" href="https://www.instagram.com/adhdcontentmedia/reel/Df9kTkeI6b_/" target="_blank" rel="noopener"><img src="img/adhd-5.jpg" alt=""></a>
-        <div class="body">
-          <div class="tophead"><span>Rolka</span><span>20.11</span></div>
+        <div class="body"><div class="tophead"><span>Rolka</span><span>20.11</span></div>
           <p class="excerpt">„🏡 Pokaż swoją inwestycję z zupełnie innej perspektywy! Dobrze przygotowana rolka to coś więcej niż zwykłe nagranie…"</p>
           <div class="meter"><div class="ml"><span>Opis</span><b>791 / 2200</b></div><div class="bar"><i style="width:36%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>5 / 30</b></div><div class="bar"><i style="width:17%"></i></div></div>
-        </div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>5 / 30</b></div><div class="bar"><i style="width:17%"></i></div></div></div>
       </div>
     </div>
 
@@ -175,59 +163,49 @@
     <h3>Profil</h3>
     <div class="facts">
       <div><span>Instagram</span><span>@makeitr__l · 306 obserwujących · 47 postów (same rolki) · 129 obserwowanych</span></div>
+      <div><span>Hashtagi</span><span>34 z 45 rolek bez żadnego hashtagu · najwięcej użytych naraz: 4 (z możliwych 30)</span></div>
+      <div><span>Aktywność</span><span>Start wrzesień 2025 · przerwa grudzień 2025 – kwiecień 2026 · od lata 2026 regularnie</span></div>
       <div><span>Zasięg</span><span>Lubelskie / Małopolskie / Podkarpacie · strona www: brak</span></div>
     </div>
 
-    <h3>Oś czasu publikacji</h3>
-    <p class="legend">Próbka 6 z 47 rolek. Posty rozłożone przez sierpień–listopad — tu publikacja jest regularna, mniej więcej co 1–3 tygodnie. Odwrotnie niż przy ADHD.</p>
+    <h3>Oś czasu publikacji — wszystkie 45 rolek</h3>
+    <p class="legend">Każda miniatura to jedna rolka, ustawiona w dniu publikacji (profil liczy 47; tu 45 wczytanych). Obramowane = post z hashtagami (rzadkość). Najedź po szczegóły, kliknij, aby otworzyć. Widać start jesienią 2025, kilkumiesięczną przerwę zimą/wiosną i regularne publikowanie od lata 2026.</p>
     <div class="tlx" id="tl-reel" data-set="reel"></div>
 
-    <h3>Ostatnie rolki — co wykorzystane, co nie</h3>
+    <h3>Wybrane rolki — co wykorzystane, co nie</h3>
     <div class="cards">
       <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DcYhoiJIs3x/" target="_blank" rel="noopener"><img src="img/reel-1.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>23.08</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>146 / 2200</b></div><div class="bar"><i style="width:7%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/Ddb3gC1o4X_/" target="_blank" rel="noopener"><img src="img/reel-2.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>18.09</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>176 / 2200</b></div><div class="bar"><i style="width:8%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/Dd91pGFoeHi/" target="_blank" rel="noopener"><img src="img/reel-3.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>01.10</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>157 / 2200</b></div><div class="bar"><i style="width:7%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
-      </div>
-      <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeGuLP9oPAl/" target="_blank" rel="noopener"><img src="img/reel-4.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>05.10</span></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeGuLP9oPAl/" target="_blank" rel="noopener"><img src="img/mk/DeGuLP9oPAl.jpg" alt=""></a>
+        <div class="body"><div class="tophead"><span>Rolka</span><span>05.10.26</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>565 / 2200</b></div><div class="bar"><i style="width:26%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
       <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeheFdjo5JJ/" target="_blank" rel="noopener"><img src="img/reel-5.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>15.10</span></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DfQFofXI7-a/" target="_blank" rel="noopener"><img src="img/mk/DfQFofXI7-a.jpg" alt=""></a>
+        <div class="body"><div class="tophead"><span>Rolka</span><span>02.11.26</span></div>
+          <div class="meter"><div class="ml"><span>Opis</span><b>678 / 2200</b></div><div class="bar"><i style="width:31%"></i></div></div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
+      </div>
+      <div class="card">
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DeheFdjo5JJ/" target="_blank" rel="noopener"><img src="img/mk/DeheFdjo5JJ.jpg" alt=""></a>
+        <div class="body"><div class="tophead"><span>Rolka · z hashtagami</span><span>15.10.26</span></div>
           <div class="meter"><div class="ml"><span>Opis</span><b>236 / 2200</b></div><div class="bar"><i style="width:11%"></i></div></div>
           <div class="meter"><div class="ml"><span>Hashtagi</span><b>4 / 30</b></div><div class="bar"><i style="width:13%"></i></div></div></div>
       </div>
       <div class="card">
-        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DgAUt4oIDec/" target="_blank" rel="noopener"><img src="img/reel-6.jpg" alt=""></a>
-        <div class="body"><div class="tophead"><span>Rolka</span><span>21.11</span></div>
-          <div class="meter"><div class="ml"><span>Opis</span><b>463 / 2200</b></div><div class="bar"><i style="width:21%"></i></div></div>
-          <div class="meter"><div class="ml"><span>Hashtagi</span><b>2 / 30</b></div><div class="bar"><i style="width:7%"></i></div></div></div>
+        <a class="thumb" href="https://www.instagram.com/makeitr__l/reel/DPTM-5zCEtD/" target="_blank" rel="noopener"><img src="img/mk/DPTM-5zCEtD.jpg" alt=""></a>
+        <div class="body"><div class="tophead"><span>Rolka</span><span>02.10.25</span></div>
+          <div class="meter"><div class="ml"><span>Opis</span><b>6 / 2200</b></div><div class="bar"><i style="width:1%"></i></div></div>
+          <div class="meter"><div class="ml"><span>Hashtagi</span><b>0 / 30</b></div><div class="bar"><i style="width:0%"></i></div></div></div>
       </div>
     </div>
 
     <h3>Co poprawić — Make it REEL</h3>
     <ul class="todo">
-      <li>Stały zestaw 15–20 lokalnych hashtagów do każdej rolki (#ślub, #wesele + region).</li>
-      <li>Jeden schemat opisu: para, miejsce, co robicie, zachęta do kontaktu.</li>
+      <li>Stały zestaw 15–20 lokalnych hashtagów do każdej rolki (#ślub, #wesele + region) — dziś 34 z 45 rolek nie ma żadnego.</li>
+      <li>Jeden schemat opisu: para, miejsce, co robicie, zachęta do kontaktu — opisy są krótkie i nierówne (od 6 do 678 znaków).</li>
       <li>Strona www + link w opisie z ofertą, cennikiem i kontaktem (teraz tylko wiadomości).</li>
-      <li>Uporządkowane wyróżnienia i zbiorcze portfolio, nie tylko pojedyncze rolki.</li>
+      <li>Nie robić wielomiesięcznych przerw (grudzień–kwiecień) — algorytm i odbiorcy nagradzają regularność.</li>
       <li>Konkretniejszy opis profilu: co, dla kogo, gdzie, jak się umówić.</li>
     </ul>
   </section>
@@ -238,6 +216,7 @@
 
 <script>
 (function(){
+  var R=function(c,d,l,h){return {img:'img/mk/'+c+'.jpg',url:'https://www.instagram.com/makeitr__l/reel/'+c+'/',date:d,typ:'Rolka',cap:l,ht:h};};
   var DATA={
     adhd:[
       {img:'img/adhd-1.jpg',url:'https://www.instagram.com/adhdcontentmedia/p/Df7II4VonNK/',date:'2026-11-21',typ:'Post',cap:1826,ht:0},
@@ -247,43 +226,54 @@
       {img:'img/adhd-5.jpg',url:'https://www.instagram.com/adhdcontentmedia/reel/Df9kTkeI6b_/',date:'2026-11-20',typ:'Rolka',cap:791,ht:5}
     ],
     reel:[
-      {img:'img/reel-1.jpg',url:'https://www.instagram.com/makeitr__l/reel/DcYhoiJIs3x/',date:'2026-08-23',typ:'Rolka',cap:146,ht:0},
-      {img:'img/reel-2.jpg',url:'https://www.instagram.com/makeitr__l/reel/Ddb3gC1o4X_/',date:'2026-09-18',typ:'Rolka',cap:176,ht:0},
-      {img:'img/reel-3.jpg',url:'https://www.instagram.com/makeitr__l/reel/Dd91pGFoeHi/',date:'2026-10-01',typ:'Rolka',cap:157,ht:0},
-      {img:'img/reel-4.jpg',url:'https://www.instagram.com/makeitr__l/reel/DeGuLP9oPAl/',date:'2026-10-05',typ:'Rolka',cap:565,ht:0},
-      {img:'img/reel-5.jpg',url:'https://www.instagram.com/makeitr__l/reel/DeheFdjo5JJ/',date:'2026-10-15',typ:'Rolka',cap:236,ht:4},
-      {img:'img/reel-6.jpg',url:'https://www.instagram.com/makeitr__l/reel/DgAUt4oIDec/',date:'2026-11-21',typ:'Rolka',cap:463,ht:2}
+      R('DOWdorBiK5r','2025-09-08',38,0),R('DOedINpCG4S','2025-09-11',157,0),R('DOjK-GEiGsH','2025-09-13',56,0),
+      R('DPG3ynuCLf8','2025-09-27',141,0),R('DPJAG7GCFO0','2025-09-28',156,0),R('DPMH8lzCDKZ','2025-09-29',208,0),
+      R('DPTM-5zCEtD','2025-10-02',6,0),R('DPW6I2BCHE8','2025-10-03',147,0),R('DPawr6fiD1s','2025-10-05',166,0),
+      R('DPa3Uu_iENg','2025-10-05',139,0),R('DPb78kCCCOI','2025-10-05',150,0),R('DPq32_yiPC-','2025-10-11',147,0),
+      R('DPtdtOgCBRT','2025-10-12',134,0),R('DPudYOYiL1x','2025-10-12',71,0),R('DPy3GdrCBYQ','2025-10-14',530,0),
+      R('DP81xkkiDde','2025-10-18',258,0),R('DR9acSciLyR','2025-12-07',378,0),R('DXUsPqCiG3L','2026-04-19',62,3),
+      R('DPyc79XiEa2','2026-06-07',79,0),R('DZS7EUgohN3','2026-06-07',169,0),R('DadvJLioKHB','2026-07-06',210,3),
+      R('DbfeW_fo5UU','2026-08-01',65,0),R('DbiJwTqMFl_','2026-08-02',116,2),R('DblvK2dIBmm','2026-08-03',141,0),
+      R('DboodJEIkme','2026-08-04',172,3),R('DbpsD5RIQp3','2026-08-05',67,3),R('Db3ahR2qNRd','2026-08-10',63,0),
+      R('Db3rRDpIFzv','2026-08-10',105,3),R('Db50zOZoOsN','2026-08-11',128,3),R('DcYhoiJIs3x','2026-08-23',146,0),
+      R('DcqToGxIv_q','2026-08-30',81,0),R('Dcvho0mo9Tc','2026-09-01',113,0),R('Dcx9X3aoxLO','2026-09-02',42,1),
+      R('DcyBND6INac','2026-09-02',80,0),R('Dc1JjDehbqO','2026-09-03',33,0),R('DdUiUvPocbO','2026-09-15',164,3),
+      R('Ddb3gC1o4X_','2026-09-18',176,0),R('DdytG6Go1Xv','2026-09-27',358,0),R('Dd0zk-BoAnq','2026-09-28',206,0),
+      R('Dd91pGFoeHi','2026-10-01',157,0),R('DeFKjM4oiWH','2026-10-04',501,0),R('DeGuLP9oPAl','2026-10-05',565,0),
+      R('DeheFdjo5JJ','2026-10-15',236,4),R('DfQFofXI7-a','2026-11-02',678,0),R('DgAUt4oIDec','2026-11-21',463,2)
     ]
   };
-  var START=new Date(2026,7,1).getTime(), END=new Date(2026,10,30).getTime();
-  var MONTHS=[['sie',new Date(2026,7,1)],['wrz',new Date(2026,8,1)],['paź',new Date(2026,9,1)],['lis',new Date(2026,10,1)]];
-  var TH=58, LANE=76, PAD=34, TOPPAD=14, AXISPAD=34;
+  var START=new Date(2025,8,1).getTime(), END=new Date(2026,11,1).getTime();
+  var MLAB=['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+  var DOT=13, LANE=20, PAD=26, TOPPAD=16, AXISPAD=40;
   var tip=document.getElementById('tltip');
-  function fmt(d){var p=d.split('-');return p[2]+'.'+p[1];}
+  function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0].slice(2);}
   function render(c){
     var set=DATA[c.dataset.set]; c.innerHTML='';
     var W=c.clientWidth, usable=Math.max(60,W-2*PAD);
-    var pts=set.map(function(p){return Object.assign({},p,{x:PAD+((new Date(p.date).getTime()-START)/(END-START))*usable});});
+    function xOf(t){return PAD+((t-START)/(END-START))*usable;}
+    var pts=set.map(function(p){return Object.assign({},p,{x:xOf(new Date(p.date).getTime())});});
     pts.sort(function(a,b){return a.x-b.x;});
     var lanes=[];
-    pts.forEach(function(p){var L=0;while(L<lanes.length&&p.x-lanes[L]<TH+6)L++;lanes[L]=p.x;p.lane=L;});
+    pts.forEach(function(p){var L=0;while(L<lanes.length&&p.x-lanes[L]<DOT+5)L++;lanes[L]=p.x;p.lane=L;});
     var laneCount=Math.max(1,lanes.length);
     var height=TOPPAD+laneCount*LANE+AXISPAD;
     c.style.height=height+'px';
     var axisY=height-AXISPAD;
     var axis=document.createElement('div');axis.className='axis';axis.style.top=axisY+'px';c.appendChild(axis);
-    MONTHS.forEach(function(m){
-      var x=PAD+((m[1].getTime()-START)/(END-START))*usable;
-      var g=document.createElement('div');g.className='grid';g.style.left=x+'px';g.style.height=(axisY-12)+'px';c.appendChild(g);
-      var t=document.createElement('div');t.className='mtick';t.style.left=x+'px';t.style.top=(axisY+2)+'px';
-      t.innerHTML='<i></i><em>'+m[0]+'</em>';c.appendChild(t);
-    });
+    var d=new Date(2025,8,1),i=0;
+    while(d.getTime()<=END){
+      var x=xOf(d.getTime());
+      var g=document.createElement('div');g.className='grid';g.style.left=x+'px';g.style.height=(axisY-8)+'px';c.appendChild(g);
+      if(i%2===0){var t=document.createElement('div');t.className='mtick';t.style.left=x+'px';t.style.top=(axisY+2)+'px';
+        t.innerHTML='<i></i><em>'+MLAB[d.getMonth()]+" '"+String(d.getFullYear()).slice(2)+'</em>';c.appendChild(t);}
+      d=new Date(d.getFullYear(),d.getMonth()+1,1);i++;
+    }
     pts.forEach(function(p){
-      var bottom=axisY-p.lane*LANE, top=bottom-TH;
-      var stem=document.createElement('div');stem.className='stem';stem.style.left=p.x+'px';stem.style.top=bottom+'px';stem.style.height=(axisY-bottom)+'px';c.appendChild(stem);
-      var a=document.createElement('a');a.className='pt'+(p.ht>0?' badge-0':'');a.href=p.url;a.target='_blank';a.rel='noopener';
-      a.style.left=(p.x-TH/2)+'px';a.style.top=top+'px';
-      a.innerHTML='<img src="'+p.img+'" alt=""><span class="dl">'+fmt(p.date)+'</span>';
+      var cy=axisY-p.lane*LANE, top=cy-DOT/2;
+      var stem=document.createElement('div');stem.className='stem';stem.style.left=p.x+'px';stem.style.top=cy+'px';stem.style.height=(axisY-cy)+'px';c.appendChild(stem);
+      var a=document.createElement('a');a.className='pt'+(p.ht>0?' hasht':'');a.href=p.url;a.target='_blank';a.rel='noopener';
+      a.style.left=(p.x-DOT/2)+'px';a.style.top=top+'px';
       a.addEventListener('mouseenter',function(e){showTip(e,p);});
       a.addEventListener('mousemove',moveTip);
       a.addEventListener('mouseleave',function(){tip.style.display='none';});
@@ -292,16 +282,17 @@
   }
   function showTip(e,p){
     var capPct=Math.round(p.cap/2200*100), htPct=Math.round(p.ht/30*100);
-    tip.innerHTML='<div class="h"><span>'+p.typ+'</span><span>'+fmt(p.date)+'</span></div>'+
+    tip.innerHTML='<img src="'+p.img+'" alt="">'+
+      '<div class="h"><span>'+p.typ+'</span><span>'+fmt(p.date)+'</span></div>'+
       '<div class="row"><span>Opis</span><span>'+p.cap+' / 2200</span></div><div class="tb"><i style="width:'+capPct+'%"></i></div>'+
       '<div class="row"><span>Hashtagi</span><span>'+p.ht+' / 30</span></div><div class="tb"><i style="width:'+htPct+'%"></i></div>'+
-      '<div class="row" style="margin-top:8px;color:#bbb">Kliknij, aby otworzyć post ↗</div>';
+      '<div class="row" style="margin-top:8px;color:#bbb">Kliknij, aby otworzyć ↗</div>';
     tip.style.display='block';moveTip(e);
   }
   function moveTip(e){
     var x=e.clientX+14, y=e.clientY+14;
     if(x+195>window.innerWidth)x=e.clientX-199;
-    if(y+120>window.innerHeight)y=e.clientY-124;
+    if(y+250>window.innerHeight)y=Math.max(10,e.clientY-254);
     tip.style.left=x+'px';tip.style.top=y+'px';
   }
   function renderAll(){document.querySelectorAll('.tlx').forEach(render);}
