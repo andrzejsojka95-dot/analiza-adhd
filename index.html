@@ -416,8 +416,9 @@
       var tr=document.createElement('tr');
       function td(cls,txt){var d=document.createElement('td');if(cls)d.className=cls;d.textContent=txt;return d;}
       var tdp=document.createElement('td');tdp.className='thumbc';
-      var a=document.createElement('a');a.href=FBPAGE;a.target='_blank';a.rel='noopener';
-      var im=document.createElement('img');im.src='img/fb/post'+(idx+1)+'.png';im.alt='';im.loading='lazy';a.appendChild(im);tdp.appendChild(a);
+      var im=document.createElement('img');im.src=p.img||('img/fb/post'+(idx+1)+'.png');im.alt='';im.loading='lazy';
+      if(p.url){var a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener';a.appendChild(im);tdp.appendChild(a);}
+      else{tdp.appendChild(im);}
       tr.appendChild(tdp);
       tr.appendChild(td('datec',fmt(p.d)));
       tr.appendChild(td('locc',p.loc||'—'));
@@ -432,10 +433,10 @@
     var n=F.length,rt=0,sh=0,co=0;
     F.forEach(function(p){rt+=p.li;sh+=p.sh;co+=p.co;});
     var el=document.getElementById('fb-summary');
-    if(el)el.textContent='Wszystkie '+n+' posty ze strony na Facebooku, od najnowszego — pełna treść, reakcje, komentarze i udostępnienia.';
+    if(el)el.textContent='Wszystkie '+n+' postów ze strony na Facebooku, od najnowszego — pełna treść, reakcje, komentarze i udostępnienia. Czerwony „!" oznacza brak (0).';
     var agg=document.getElementById('fb-agg');
     if(agg)agg.innerHTML=
-      tile(n, 'Posty na Facebooku', 'dwa z czerwca 2026, przerwa, dwa z listopada', 'Za mało, nieregularnie')+
+      tile(n, 'Posty na Facebooku', 'czerwiec–sierpień 2026, potem przerwa i dwa w listopadzie', 'Nieregularnie')+
       tile(nf(rt), 'Reakcje razem', 'średnio '+(rt/n).toFixed(1).replace('.',',')+' na post', null)+
       tile(nf(sh), 'Udostępnienia razem', 'średnio '+(sh/n).toFixed(1).replace('.',',')+' na post', null)+
       tile(co, 'Komentarze razem', 'zero dyskusji pod postami', 'Pilne do poprawy');
