@@ -77,18 +77,24 @@
   #reel-table th{text-align:left;padding:9px 10px;border-bottom:2px solid var(--line2);vertical-align:bottom;
     font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
   #reel-table th.num,#reel-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
-  #reel-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  #reel-table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle;}
   #reel-table tr:hover td{background:#fafafa;}
-  #reel-table td.thumbc{width:124px;}
+  #reel-table td.thumbc{width:168px;}
   #reel-table td.thumbc a{display:block;position:relative;}
-  #reel-table td.thumbc img{width:116px;height:116px;object-fit:cover;border:1px solid #111;display:block;}
-  @media(max-width:620px){#reel-table td.thumbc{width:92px;}#reel-table td.thumbc img{width:84px;height:84px;}}
+  #reel-table td.thumbc img{width:158px;height:158px;object-fit:cover;border:1px solid #111;display:block;}
+  @media(max-width:620px){#reel-table td.thumbc{width:108px;}#reel-table td.thumbc img{width:100px;height:100px;}}
   #reel-table td.datec{white-space:nowrap;color:var(--soft);}
   #reel-table td.capc{min-width:280px;max-width:460px;white-space:pre-wrap;word-break:break-word;line-height:1.45;}
   #reel-table td.zero{color:#111;font-weight:700;}
   #reel-table .mini{display:inline-block;min-width:34px;}
-  .sumstats{display:flex;flex-wrap:wrap;gap:8px 26px;margin:2px 0 14px;font-size:.9rem;}
-  .sumstats b{font-variant-numeric:tabular-nums;}
+  .agg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:4px 0 20px;}
+  @media(max-width:720px){.agg{grid-template-columns:repeat(2,1fr);}}
+  .agg .tile{border:1px solid var(--line);padding:14px 16px;}
+  .agg .tile .big{font-size:1.5rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1;}
+  .agg .tile .lab{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);margin-top:6px;}
+  .agg .tile .sub{font-size:.82rem;color:var(--soft);margin-top:4px;}
+  .agg .tile .mini-bar{height:7px;background:var(--track);border:1px solid #cfcfcf;position:relative;margin-top:9px;}
+  .agg .tile .mini-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);}
   ul{margin:8px 0 0;padding:0;list-style:none;font-size:.95rem;max-width:1000px;}
   ul li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line);}
   ul li:last-child{border-bottom:none;}
@@ -191,6 +197,7 @@
 
     <h3>Wszystkie rolki — pełne dane</h3>
     <p id="reel-summary" class="legend">Ładowanie danych…</p>
+    <div class="agg" id="reel-agg"></div>
     <div class="tablewrap">
       <table id="reel-table">
         <thead><tr>
@@ -323,10 +330,20 @@
       [td1,td2,td3,td4,td5,td6,td7].forEach(function(td){tr.appendChild(td);});
       tb.appendChild(tr);
     });
-    var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0;
-    R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;});
+    var n=R.length,sl=0,sc=0,noh=0,maxl=0,sumcap=0,sumht=0;
+    R.forEach(function(p){sl+=p.li||0;sc+=p.co||0;if(p.h===0)noh++;maxl=Math.max(maxl,p.li||0);sumcap+=p.l||0;sumht+=p.h||0;});
+    function nf(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+    function tile(big,lab,sub,pct){var bar=(pct==null)?'':'<div class="mini-bar"><i style="width:'+pct+'%"></i></div>';return '<div class="tile"><div class="big">'+big+'</div><div class="lab">'+lab+'</div><div class="sub">'+sub+'</div>'+bar+'</div>';}
+    var capPoss=n*2200, htPoss=n*30;
+    var capPct=Math.round(sumcap/capPoss*100), htPct=Math.round(sumht/htPoss*100);
     var el=document.getElementById('reel-summary');
-    if(el)el.textContent='Wszystkie '+n+' wczytanych rolek (profil liczy 47), od najnowszej. Średnio '+Math.round(sl/n)+' polubień i '+(sc/n).toFixed(1)+' komentarza na rolkę; rekord polubień: '+maxl+'. Bez żadnego hashtagu: '+noh+' z '+n+' rolek. Średnia długość opisu: '+Math.round(sumcap/n)+' znaków (z limitu 2200). Kliknij miniaturę, aby otworzyć rolkę.';
+    if(el)el.textContent='Wszystkie '+n+' wczytanych rolek (profil liczy 47), od najnowszej. Słupki pokazują, jak mała część dostępnego limitu jest wykorzystana. Kliknij miniaturę, aby otworzyć rolkę.';
+    var agg=document.getElementById('reel-agg');
+    if(agg)agg.innerHTML=
+      tile(nf(sumcap)+' / '+nf(capPoss), 'Znaki opisów', capPct+'% limitu (2200 znaków na rolkę)', capPct)+
+      tile(nf(sumht)+' / '+nf(htPoss), 'Hashtagi', htPct+'% limitu (30 na rolkę) · '+noh+' rolek bez hashtagu', htPct)+
+      tile(nf(sl), 'Polubienia razem', 'średnio '+Math.round(sl/n)+' na rolkę · rekord '+maxl, null)+
+      tile(nf(sc), 'Komentarze razem', 'średnio '+(sc/n).toFixed(1).replace('.',',')+' na rolkę', null);
   }).catch(function(e){var el=document.getElementById('reel-summary');if(el)el.textContent='Nie udało się wczytać danych rolek (reels.json).';});
 })();
 </script>
